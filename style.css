@@ -351,3 +351,56 @@ button:active {
   }
 
 }
+/* =================
+   SCENE 5
+================= */
+
+#scene-5 {
+  background:
+    radial-gradient(circle at center, #ffd9e8 0%, #f5b8d2 60%, #e68db5 100%);
+}
+
+.birthday-scene {
+  width: 90%;
+  max-width: 650px;
+
+  text-align: center;
+
+  background: rgba(255,255,255,0.9);
+
+  padding: 35px 25px;
+
+  border: 5px solid white;
+
+  box-shadow:
+    8px 8px 0 #c65b8b;
+}
+
+.birthday-scene h2 {
+  font-size: 38px;
+  color: #c65387;
+
+  margin-bottom: 18px;
+
+  text-shadow:
+    3px 3px 0 white;
+}
+
+.birthday-scene p {
+  font-size: 17px;
+  line-height: 1.7;
+
+  color: #7c4c62;
+
+  margin-bottom: 25px;
+}
+
+.birthday-characters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  margin-bottom: 25px;
+}
