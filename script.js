@@ -1,11 +1,15 @@
 const startButton = document.getElementById("start-btn");
 const startScreen = document.getElementById("start-screen");
 const scene2 = document.getElementById("scene-2");
+const bgMusic = document.getElementById("bg-music");
 
 startButton.addEventListener("click", function () {
+  bgMusic.play();
+
   startScreen.classList.add("hidden");
   scene2.classList.remove("hidden");
 });
+
 const continueButton = document.getElementById("continue-btn");
 const scene3 = document.getElementById("scene-3");
 
