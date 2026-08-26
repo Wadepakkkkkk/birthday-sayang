@@ -1486,3 +1486,265 @@ button::before {
   }
 
 }
+/* ==================================
+   SCENE 1 - CUTE PIXEL GAME WORLD
+================================== */
+
+#scene-1 {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Keep actual Scene 1 content above decorations */
+#scene-1 > *:not(.game-world-deco) {
+  position: relative;
+  z-index: 5;
+}
+
+.game-world-deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+
+/* ---------- LEVEL SIGN ---------- */
+
+.level-sign {
+  position: absolute;
+  left: 7%;
+  bottom: 19%;
+
+  padding: 9px 14px;
+
+  background: #fff8f8;
+  border: 4px solid #c85a8b;
+
+  box-shadow:
+    5px 5px 0 #a84a73;
+
+  color: #a84a73;
+
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 2px;
+
+  transform: rotate(-2deg);
+}
+
+
+/* ---------- PIXEL BUSHES ---------- */
+
+.pixel-bush {
+  position: absolute;
+  bottom: 10%;
+
+  width: 110px;
+  height: 42px;
+
+  background: #65b95c;
+
+  box-shadow:
+    18px -18px 0 #74c96a,
+    45px -28px 0 #74c96a,
+    72px -15px 0 #65b95c,
+    0 7px 0 #4d9f4b;
+
+  image-rendering: pixelated;
+}
+
+.bush-left {
+  left: 3%;
+}
+
+.bush-right {
+  right: 8%;
+  transform: scale(.8);
+}
+
+
+/* ---------- FLOWERS ---------- */
+
+.flower {
+  position: absolute;
+
+  color: #fff7d6;
+
+  font-size: 18px;
+
+  text-shadow:
+    2px 2px 0 #dc79a6;
+
+  animation: flowerBounce 2.5s steps(2) infinite;
+}
+
+.flower-1 {
+  left: 18%;
+  bottom: 9%;
+}
+
+.flower-2 {
+  left: 29%;
+  bottom: 7%;
+  animation-delay: .4s;
+}
+
+.flower-3 {
+  right: 25%;
+  bottom: 8%;
+  animation-delay: .8s;
+}
+
+.flower-4 {
+  right: 13%;
+  bottom: 6%;
+  animation-delay: 1.2s;
+}
+
+
+/* ---------- PIXEL MUSHROOM ---------- */
+
+.mushroom {
+  position: absolute;
+
+  width: 26px;
+  height: 14px;
+
+  background: #dc6f9e;
+
+  border-radius: 13px 13px 2px 2px;
+
+  box-shadow:
+    inset 7px 3px 0 #fff2f6,
+    inset -5px 4px 0 #c45b89;
+}
+
+.mushroom span {
+  position: absolute;
+
+  width: 9px;
+  height: 13px;
+
+  background: #fff8e8;
+
+  left: 9px;
+  top: 12px;
+}
+
+.mushroom-1 {
+  left: 11%;
+  bottom: 7%;
+}
+
+.mushroom-2 {
+  right: 18%;
+  bottom: 8%;
+  transform: scale(.75);
+}
+
+
+/* ---------- FLOATING PARTICLES ---------- */
+
+.game-sparkle {
+  position: absolute;
+
+  color: rgba(255,255,255,.9);
+
+  font-size: 17px;
+
+  text-shadow:
+    2px 2px 0 rgba(201,90,139,.35);
+
+  animation: gameFloat 3s steps(3) infinite;
+}
+
+.sparkle-1 {
+  left: 14%;
+  top: 25%;
+}
+
+.sparkle-2 {
+  right: 15%;
+  top: 29%;
+  animation-delay: 1s;
+}
+
+.sparkle-3 {
+  right: 26%;
+  top: 18%;
+
+  color: #dc79a6;
+
+  animation-delay: .5s;
+}
+
+
+/* ---------- ANIMATION ---------- */
+
+@keyframes gameFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: .45;
+  }
+
+  50% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+@keyframes flowerBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+
+/* ---------- iPHONE ---------- */
+
+@media (max-width: 600px) {
+
+  .pixel-bush {
+    transform: scale(.65);
+  }
+
+  .bush-left {
+    left: -20px;
+  }
+
+  .bush-right {
+    right: -25px;
+    transform: scale(.55);
+  }
+
+  .level-sign {
+    left: 5%;
+    bottom: 16%;
+
+    font-size: 9px;
+
+    padding: 6px 9px;
+  }
+
+  .flower {
+    font-size: 12px;
+  }
+
+  .mushroom {
+    transform: scale(.7);
+  }
+
+  .mushroom-2 {
+    transform: scale(.55);
+  }
+}
