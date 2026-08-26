@@ -3,229 +3,356 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>For You ♡</title>
 
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 
 <body>
 
-  <!-- SCENE 1 -->
-<section id="start-screen" class="screen">
 
-  <div class="pixel-cloud cloud-one"></div>
-  <div class="pixel-cloud cloud-two"></div>
+  <!-- =======================
+       SCENE 1
+  ======================== -->
 
-  <div class="floating-heart heart-one">♡</div>
-  <div class="floating-heart heart-two">♡</div>
-  <div class="floating-heart heart-three">♡</div>
+  <section id="start-screen" class="screen">
 
-  <div class="start-content">
+    <div class="pixel-cloud cloud-one"></div>
+    <div class="pixel-cloud cloud-two"></div>
 
-    <p class="start-small">A LITTLE STORY FOR YOU</p>
+    <div class="floating-heart heart-one">♡</div>
+    <div class="floating-heart heart-two">♡</div>
+    <div class="floating-heart heart-three">♡</div>
 
-    <h1>READY?</h1>
+    <div class="start-content">
 
-    <button id="start-btn">
-      START ♡
-    </button>
+      <p class="small-label">
+        A LITTLE STORY FOR YOU
+      </p>
 
-  </div>
+      <h1>READY?</h1>
 
-  <div class="pixel-ground"></div>
+      <button id="start-btn">
+        START ♡
+      </button>
 
-</section>
+    </div>
 
-  <!-- SCENE 2 -->
-<section id="scene-2" class="screen hidden">
+    <div class="pixel-ground"></div>
 
-  <div class="scene2-cloud cloud-left"></div>
-  <div class="scene2-cloud cloud-right"></div>
+  </section>
 
-  <div class="scene2-heart heart-a">♡</div>
-  <div class="scene2-heart heart-b">♡</div>
 
-  <div class="game-dialog">
 
-    <div class="dialog-icon">♡</div>
+  <!-- =======================
+       SCENE 2
+  ======================== -->
 
-    <h2>Hi Sayang!</h2>
+  <section id="scene-2" class="screen hidden">
 
-    <p>
-      I made something special for you...
-    </p>
+    <div class="pixel-cloud scene2-cloud-left"></div>
+    <div class="pixel-cloud scene2-cloud-right"></div>
 
-    <button id="continue-btn">
-      CONTINUE ♡
-    </button>
+    <div class="scene-heart scene2-heart-1">♡</div>
+    <div class="scene-heart scene2-heart-2">♡</div>
 
-  </div>
+    <div class="game-card">
 
-  <div class="scene2-ground"></div>
+      <div class="big-heart">♡</div>
 
-</section>
-  
-<!-- SCENE 3 -->
-<section id="scene-3" class="screen hidden">
+      <h2>Hi Sayang!</h2>
 
-  <div class="memory-heart memory-heart-1">♡</div>
-  <div class="memory-heart memory-heart-2">♡</div>
-  <div class="memory-heart memory-heart-3">♡</div>
+      <p>
+        I made something special for you...
+      </p>
 
-  <div class="memory-container">
+      <button id="continue-btn">
+        CONTINUE ♡
+      </button>
 
-    <p class="memory-small">OUR LITTLE STORY ♡</p>
+    </div>
 
-    <h2>Do you remember?</h2>
+    <div class="pixel-ground scene2-ground"></div>
 
-    <p class="memory-text">
-      The little moments we shared...
-    </p>
+  </section>
 
-    <div class="memory-photos">
 
-      <div class="memory-photo photo-left">
-        <div class="photo-placeholder">♡</div>
-        <span>MEMORY 01</span>
+
+  <!-- =======================
+       SCENE 3
+  ======================== -->
+
+  <section id="scene-3" class="screen hidden">
+
+    <div class="scene-heart memory-heart-1">♡</div>
+    <div class="scene-heart memory-heart-2">♡</div>
+    <div class="scene-heart memory-heart-3">♡</div>
+
+    <div class="memory-container">
+
+      <p class="small-label">
+        OUR LITTLE STORY ♡
+      </p>
+
+      <h2>Do you remember?</h2>
+
+      <p class="memory-text">
+        The little moments we shared...
+      </p>
+
+
+      <div class="memory-photos">
+
+        <div class="memory-photo photo-left">
+          <div class="photo-placeholder">
+            ♡
+          </div>
+
+          <span>MEMORY 01</span>
+        </div>
+
+
+        <div class="memory-photo photo-middle">
+          <div class="photo-placeholder">
+            ♡
+          </div>
+
+          <span>MEMORY 02</span>
+        </div>
+
+
+        <div class="memory-photo photo-right">
+          <div class="photo-placeholder">
+            ♡
+          </div>
+
+          <span>MEMORY 03</span>
+        </div>
+
       </div>
 
-      <div class="memory-photo photo-middle">
-        <div class="photo-placeholder">♡</div>
-        <span>MEMORY 02</span>
+
+      <button id="next-btn">
+        NEXT ♡
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================
+       SCENE 4
+  ======================== -->
+
+  <section id="scene-4" class="screen hidden">
+
+    <div class="scene4-detail star-1">✦</div>
+    <div class="scene4-detail star-2">✦</div>
+    <div class="scene4-detail scene4-heart-a">♡</div>
+    <div class="scene4-detail scene4-heart-b">♡</div>
+
+
+    <div class="scene4-content">
+
+      <p class="small-label">
+        ACROSS EVERY UNIVERSE
+      </p>
+
+      <h2>Just us ♡</h2>
+
+
+      <div class="characters">
+
+        <div class="character-wrap">
+
+          <img
+            src="spiderman.png"
+            alt="Spider-Man"
+            class="pixel-character"
+          >
+
+          <span>YOU</span>
+
+        </div>
+
+
+        <div class="between-heart">
+          ♡
+        </div>
+
+
+        <div class="character-wrap">
+
+          <img
+            src="spidergwen.png"
+            alt="Spider-Gwen"
+            class="pixel-character"
+          >
+
+          <span>ME</span>
+
+        </div>
+
       </div>
 
-      <div class="memory-photo photo-right">
-        <div class="photo-placeholder">♡</div>
-        <span>MEMORY 03</span>
+
+      <div class="pixel-dialog">
+
+        <p>
+          Would you stay with me through every universe?
+        </p>
+
+        <div class="choice-buttons">
+
+          <button id="yes-btn">
+            YES ♡
+          </button>
+
+          <button id="no-btn">
+            NO
+          </button>
+
+        </div>
+
       </div>
 
     </div>
 
-    <button id="next-btn">
-      NEXT ♡
-    </button>
 
-  </div>
+    <div class="pixel-ground scene4-ground"></div>
 
-</section>
-  
-  <!-- SCENE 4 -->
-<section id="scene-4" class="screen hidden">
+  </section>
 
-  <div class="scene4-sky-detail star-1">✦</div>
-  <div class="scene4-sky-detail star-2">✦</div>
-  <div class="scene4-sky-detail heart-4a">♡</div>
-  <div class="scene4-sky-detail heart-4b">♡</div>
 
-  <div class="pixel-scene">
 
-    <p class="scene4-small">ACROSS EVERY UNIVERSE</p>
+  <!-- =======================
+       SCENE 5
+  ======================== -->
 
-    <h2>Just us ♡</h2>
+  <section id="scene-5" class="screen hidden">
 
-    <div class="characters scene4-characters">
+    <div class="birthday-card">
 
-      <div class="character-wrap">
+      <p class="small-label">
+        FOR MY FAVOURITE PERSON
+      </p>
+
+      <h2>
+        Happy Birthday, Sayang ♡
+      </h2>
+
+      <p class="birthday-text">
+        No matter which universe we're in,
+        I'd still choose you.
+      </p>
+
+
+      <div class="birthday-characters">
+
         <img
           src="spiderman.png"
           alt="Spider-Man"
-          class="pixel-character scene4-character"
+          class="birthday-character"
         >
-        <span>YOU</span>
-      </div>
 
-      <div class="scene4-heart">♡</div>
+        <div class="between-heart">
+          ♡
+        </div>
 
-      <div class="character-wrap">
         <img
           src="spidergwen.png"
           alt="Spider-Gwen"
-          class="pixel-character scene4-character"
+          class="birthday-character"
         >
-        <span>ME</span>
+
       </div>
+
+
+      <button id="final-btn">
+        ONE MORE THING ♡
+      </button>
 
     </div>
 
-    <div class="dialog-box scene4-dialog">
+  </section>
 
-      <p>
-        Would you stay with me through every universe?
+
+
+  <!-- =======================
+       SCENE 6
+  ======================== -->
+
+  <section id="scene-6" class="screen hidden">
+
+    <div class="scene-heart final-floating-heart-1">♡</div>
+    <div class="scene-heart final-floating-heart-2">♡</div>
+
+    <div class="final-letter">
+
+      <div class="big-heart">
+        ♡
+      </div>
+
+      <p class="small-label">
+        ONE LAST THING
       </p>
 
-      <div class="choice-buttons">
-        <button id="yes-btn">YES ♡</button>
-        <button id="no-btn">NO</button>
-      </div>
+      <h2>
+        For You ♡
+      </h2>
+
+
+      <p class="letter-text">
+
+        Happy birthday to my favourite person.
+
+        <br><br>
+
+        Thank you for every little moment,
+        every laugh, and every memory we've made.
+
+        <br><br>
+
+        No matter where life takes us,
+        I hope we get to make a million more
+        memories together.
+
+        <br><br>
+
+        In every universe,
+        <br>
+
+        I'd still choose you. ♡
+
+      </p>
+
+
+      <p class="final-love">
+        I love you ♡
+      </p>
 
     </div>
 
-  </div>
+  </section>
 
-  <div class="scene4-ground"></div>
 
-</section>
-  <!-- SCENE 5 -->
-<section id="scene-5" class="screen hidden">
 
-  <div class="birthday-scene">
+  <!-- BACKGROUND MUSIC -->
 
-    <h2>Happy Birthday, Sayang ♡</h2>
+  <audio id="bg-music" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
 
-    <p>
-      No matter which universe we're in,
-      I'd still choose you.
-    </p>
 
-    <div class="birthday-characters">
-      <img src="spiderman.png" class="pixel-character" alt="Spider-Man">
-      <div class="love-heart">♡</div>
-      <img src="spidergwen.png" class="pixel-character" alt="Spider-Gwen">
-    </div>
-
-    <button id="final-btn">ONE MORE THING ♡</button>
-
-  </div>
-
-</section>
-  
-  <!-- SCENE 6 - FINAL LETTER -->
-<section id="scene-6" class="screen hidden">
-
-  <div class="final-letter">
-
-    <div class="final-heart">♡</div>
-
-    <h2>One last thing...</h2>
-
-    <p class="letter-text">
-      Happy birthday to my favourite person.
-      <br><br>
-      Thank you for every little moment,
-      every laugh, and every memory we've made.
-      <br><br>
-      No matter where life takes us,
-      I hope we get to make a million more memories together.
-      <br><br>
-      In every universe,<br>
-      I'd still choose you. ♡
-    </p>
-
-    <p class="final-love">
-      I love you ♡
-    </p>
-
-  </div>
-
-</section>
-  
-  <audio id="bg-music" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-  
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=7"></script>
 
 </body>
 
