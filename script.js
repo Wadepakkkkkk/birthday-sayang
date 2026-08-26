@@ -13,3 +13,10 @@ continueButton.addEventListener("click", function () {
   scene2.classList.add("hidden");
   scene3.classList.remove("hidden");
 });
+const nextButton = document.getElementById("next-btn");
+const scene4 = document.getElementById("scene-4");
+
+nextButton.addEventListener("click", function () {
+  scene3.classList.add("hidden");
+  scene4.classList.remove("hidden");
+});
