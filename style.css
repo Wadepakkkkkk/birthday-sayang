@@ -200,3 +200,149 @@ button:active {
   }
 
 }
+/* =================
+   SCENE 4 - PIXEL WORLD
+================= */
+
+#scene-4 {
+  background:
+    linear-gradient(
+      to bottom,
+      #9edcff 0%,
+      #c8ecff 68%,
+      #8ed174 68%,
+      #69b85a 100%
+    );
+}
+
+.pixel-scene {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pixel-scene h2 {
+  color: #d45c91;
+  font-size: 32px;
+  margin-bottom: 30px;
+
+  text-shadow:
+    3px 3px 0 white;
+}
+
+
+/* CHARACTERS */
+
+.characters {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  gap: 35px;
+
+  margin-bottom: 30px;
+}
+
+.pixel-character {
+  width: 150px;
+  height: 150px;
+
+  object-fit: contain;
+
+  image-rendering: pixelated;
+
+  animation: characterBounce 2s ease-in-out infinite;
+}
+
+.love-heart {
+  font-size: 45px;
+
+  color: #e75d93;
+
+  align-self: center;
+
+  animation: heartbeat 1s infinite;
+}
+
+
+/* PIXEL DIALOG */
+
+.dialog-box {
+  width: 85%;
+  max-width: 550px;
+
+  background: white;
+
+  border: 5px solid #d45c91;
+
+  padding: 20px;
+
+  text-align: center;
+
+  box-shadow:
+    7px 7px 0 #9d456c;
+}
+
+.dialog-box p {
+  color: #73445a;
+
+  font-size: 16px;
+
+  line-height: 1.5;
+
+  margin-bottom: 18px;
+}
+
+
+/* YES / NO */
+
+.choice-buttons {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+}
+
+.choice-buttons button {
+  min-width: 100px;
+}
+
+
+/* CHARACTER ANIMATION */
+
+@keyframes characterBounce {
+
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .pixel-character {
+    width: 105px;
+    height: 105px;
+  }
+
+  .characters {
+    gap: 15px;
+  }
+
+  .love-heart {
+    font-size: 30px;
+  }
+
+}
