@@ -46,3 +46,10 @@ yesButton.addEventListener("click", function () {
   scene4.classList.add("hidden");
   scene5.classList.remove("hidden");
 });
+const finalButton = document.getElementById("final-btn");
+const scene6 = document.getElementById("scene-6");
+
+finalButton.addEventListener("click", function () {
+  scene5.classList.add("hidden");
+  scene6.classList.remove("hidden");
+});
