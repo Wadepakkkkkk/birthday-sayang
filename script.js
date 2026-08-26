@@ -20,3 +20,18 @@ nextButton.addEventListener("click", function () {
   scene3.classList.add("hidden");
   scene4.classList.remove("hidden");
 });
+const noButton = document.getElementById("no-btn");
+
+noButton.addEventListener("click", function () {
+
+  const maxX = window.innerWidth - noButton.offsetWidth;
+  const maxY = window.innerHeight - noButton.offsetHeight;
+
+  const randomX = Math.floor(Math.random() * maxX);
+  const randomY = Math.floor(Math.random() * maxY);
+
+  noButton.style.position = "fixed";
+  noButton.style.left = randomX + "px";
+  noButton.style.top = randomY + "px";
+  noButton.style.zIndex = "999";
+});
