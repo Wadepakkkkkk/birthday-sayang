@@ -1,7 +1,8 @@
-const button = document.getElementById("start-btn");
+const startButton = document.getElementById("start-btn");
+const startScreen = document.getElementById("start-screen");
+const scene2 = document.getElementById("scene-2");
 
-button.addEventListener("click", function () {
-
-  button.innerText = "LET'S GO ♡";
-
+startButton.addEventListener("click", function () {
+  startScreen.classList.add("hidden");
+  scene2.classList.remove("hidden");
 });
