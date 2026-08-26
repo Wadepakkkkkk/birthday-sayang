@@ -332,13 +332,18 @@ button:active {
 
 @media (max-width: 600px) {
 
-  .pixel-character {
-    width: 105px;
-    height: 105px;
-  }
+.pixel-character {
+  width: 190px;
+  height: 190px;
+
+  object-fit: contain;
+  image-rendering: pixelated;
+
+  animation: characterBounce 2s ease-in-out infinite;
+}
 
   .characters {
-    gap: 15px;
+  gap: 20px;
   }
 
   .love-heart {
