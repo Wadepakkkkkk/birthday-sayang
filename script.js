@@ -1,55 +1,186 @@
-const startButton = document.getElementById("start-btn");
-const startScreen = document.getElementById("start-screen");
-const scene2 = document.getElementById("scene-2");
-const bgMusic = document.getElementById("bg-music");
+const startButton =
+  document.getElementById("start-btn");
 
-startButton.addEventListener("click", function () {
-  bgMusic.play();
+const continueButton =
+  document.getElementById("continue-btn");
 
-  startScreen.classList.add("hidden");
-  scene2.classList.remove("hidden");
-});
+const nextButton =
+  document.getElementById("next-btn");
 
-const continueButton = document.getElementById("continue-btn");
-const scene3 = document.getElementById("scene-3");
+const yesButton =
+  document.getElementById("yes-btn");
 
-continueButton.addEventListener("click", function () {
-  scene2.classList.add("hidden");
-  scene3.classList.remove("hidden");
-});
-const nextButton = document.getElementById("next-btn");
-const scene4 = document.getElementById("scene-4");
+const noButton =
+  document.getElementById("no-btn");
 
-nextButton.addEventListener("click", function () {
-  scene3.classList.add("hidden");
-  scene4.classList.remove("hidden");
-});
-const noButton = document.getElementById("no-btn");
+const finalButton =
+  document.getElementById("final-btn");
 
-noButton.addEventListener("click", function () {
 
-  const maxX = window.innerWidth - noButton.offsetWidth;
-  const maxY = window.innerHeight - noButton.offsetHeight;
+const startScreen =
+  document.getElementById("start-screen");
 
-  const randomX = Math.floor(Math.random() * maxX);
-  const randomY = Math.floor(Math.random() * maxY);
+const scene2 =
+  document.getElementById("scene-2");
 
-  noButton.style.position = "fixed";
-  noButton.style.left = randomX + "px";
-  noButton.style.top = randomY + "px";
-  noButton.style.zIndex = "999";
-});
-const yesButton = document.getElementById("yes-btn");
-const scene5 = document.getElementById("scene-5");
+const scene3 =
+  document.getElementById("scene-3");
 
-yesButton.addEventListener("click", function () {
-  scene4.classList.add("hidden");
-  scene5.classList.remove("hidden");
-});
-const finalButton = document.getElementById("final-btn");
-const scene6 = document.getElementById("scene-6");
+const scene4 =
+  document.getElementById("scene-4");
 
-finalButton.addEventListener("click", function () {
-  scene5.classList.add("hidden");
-  scene6.classList.remove("hidden");
-});
+const scene5 =
+  document.getElementById("scene-5");
+
+const scene6 =
+  document.getElementById("scene-6");
+
+
+const bgMusic =
+  document.getElementById("bg-music");
+
+
+/* =========================
+   START
+========================= */
+
+startButton.addEventListener(
+  "click",
+  function () {
+
+    bgMusic.volume = 0.65;
+
+    bgMusic
+      .play()
+      .catch(function (error) {
+        console.log(
+          "Music could not start:",
+          error
+        );
+      });
+
+
+    startScreen.classList.add("hidden");
+
+    scene2.classList.remove("hidden");
+
+  }
+);
+
+
+/* =========================
+   SCENE 2 -> 3
+========================= */
+
+continueButton.addEventListener(
+  "click",
+  function () {
+
+    scene2.classList.add("hidden");
+
+    scene3.classList.remove("hidden");
+
+  }
+);
+
+
+/* =========================
+   SCENE 3 -> 4
+========================= */
+
+nextButton.addEventListener(
+  "click",
+  function () {
+
+    scene3.classList.add("hidden");
+
+    scene4.classList.remove("hidden");
+
+  }
+);
+
+
+/* =========================
+   NO BUTTON RUNS AWAY
+========================= */
+
+noButton.addEventListener(
+  "click",
+  function () {
+
+    const padding = 20;
+
+    const maxX =
+      window.innerWidth
+      - noButton.offsetWidth
+      - padding;
+
+    const maxY =
+      window.innerHeight
+      - noButton.offsetHeight
+      - padding;
+
+
+    const randomX =
+      Math.max(
+        padding,
+        Math.floor(
+          Math.random() * maxX
+        )
+      );
+
+    const randomY =
+      Math.max(
+        padding,
+        Math.floor(
+          Math.random() * maxY
+        )
+      );
+
+
+    noButton.style.position =
+      "fixed";
+
+    noButton.style.left =
+      randomX + "px";
+
+    noButton.style.top =
+      randomY + "px";
+
+    noButton.style.zIndex =
+      "9999";
+
+  }
+);
+
+
+/* =========================
+   YES -> BIRTHDAY
+========================= */
+
+yesButton.addEventListener(
+  "click",
+  function () {
+
+    scene4.classList.add("hidden");
+
+    scene5.classList.remove("hidden");
+
+  }
+);
+
+
+/* =========================
+   FINAL LETTER
+========================= */
+
+finalButton.addEventListener(
+  "click",
+  function () {
+
+    scene5.classList.add("hidden");
+
+    scene6.classList.remove("hidden");
+
+  }
+);
