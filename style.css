@@ -931,3 +931,46 @@ button:active {
     right: 4%;
   }
 }
+/* =========================
+   SCENE 2 - SIZE FIX
+========================= */
+
+#scene-2 .game-dialog {
+  width: 58%;
+  max-width: 470px;
+  padding: 28px 24px;
+
+  transform: translateY(-15px);
+}
+
+#scene-2 .scene2-ground {
+  height: 20%;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.08) 0px,
+      rgba(255,255,255,0.08) 12px,
+      transparent 12px,
+      transparent 24px
+    ),
+    #83c66d;
+}
+
+@media (max-width: 1100px) {
+  #scene-2 .game-dialog {
+    width: 55%;
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 600px) {
+  #scene-2 .game-dialog {
+    width: 76%;
+    padding: 24px 18px;
+  }
+
+  #scene-2 .scene2-ground {
+    height: 18%;
+  }
+}
