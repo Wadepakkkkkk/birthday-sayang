@@ -35,3 +35,10 @@ noButton.addEventListener("click", function () {
   noButton.style.top = randomY + "px";
   noButton.style.zIndex = "999";
 });
+const yesButton = document.getElementById("yes-btn");
+const scene5 = document.getElementById("scene-5");
+
+yesButton.addEventListener("click", function () {
+  scene4.classList.add("hidden");
+  scene5.classList.remove("hidden");
+});
