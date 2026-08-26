@@ -1748,3 +1748,61 @@ button::before {
     transform: scale(.55);
   }
 }
+/* SCENE 1 - FINAL POLISH */
+
+/* Bush lebih kecil */
+#scene-1 .pixel-bush {
+  width: 75px;
+  height: 28px;
+
+  box-shadow:
+    14px -14px 0 #74c96a,
+    32px -20px 0 #74c96a,
+    50px -11px 0 #65b95c,
+    0 6px 0 #4d9f4b;
+}
+
+#scene-1 .bush-left {
+  left: 4%;
+}
+
+#scene-1 .bush-right {
+  right: 7%;
+  transform: scale(.85);
+}
+
+/* Bunga lebih clean */
+#scene-1 .flower {
+  font-size: 14px;
+}
+
+#scene-1 .flower-1 {
+  left: 19%;
+}
+
+#scene-1 .flower-2 {
+  left: 35%;
+}
+
+#scene-1 .flower-3 {
+  right: 34%;
+}
+
+#scene-1 .flower-4 {
+  right: 18%;
+}
+
+/* Mushroom kecil sikit */
+#scene-1 .mushroom-1 {
+  transform: scale(.8);
+}
+
+#scene-1 .mushroom-2 {
+  transform: scale(.65);
+}
+
+/* LEVEL 01 kecil & kemas */
+#scene-1 .level-sign {
+  padding: 7px 11px;
+  font-size: 11px;
+}
