@@ -768,3 +768,166 @@ button:active {
   }
 
 }
+/* =========================
+   SCENE 2 - FINAL POLISH
+========================= */
+
+#scene-2 {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom,
+    #f7c7dc 0%,
+    #f4bdd6 72%,
+    #a8d98b 72%,
+    #83c66d 100%
+  );
+}
+
+/* Smaller dialog card */
+#scene-2 .game-dialog {
+  width: 70%;
+  max-width: 520px;
+  padding: 32px 28px;
+
+  background: #fffafb;
+  border: 5px solid #ffffff;
+
+  box-shadow:
+    8px 8px 0 #c85d8d;
+
+  z-index: 10;
+}
+
+/* Heart above title */
+#scene-2 .dialog-icon {
+  font-size: 42px;
+  margin-bottom: 12px;
+  color: #d86b9b;
+}
+
+/* Title */
+#scene-2 .game-dialog h2 {
+  margin: 0 0 15px;
+
+  font-size: 34px;
+  color: #c95888;
+
+  text-shadow:
+    2px 2px 0 #f4c2d7;
+}
+
+/* Text */
+#scene-2 .game-dialog p {
+  margin: 0 0 25px;
+
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #8b6878;
+}
+
+/* Pixel clouds */
+#scene-2 .scene2-cloud {
+  width: 100px;
+  height: 30px;
+
+  background: #fffafa;
+
+  box-shadow:
+    20px -20px 0 #fffafa,
+    45px -10px 0 #fffafa,
+    70px -18px 0 #fffafa;
+
+  opacity: 0.9;
+
+  z-index: 2;
+}
+
+#scene-2 .cloud-left {
+  top: 18%;
+  left: 9%;
+}
+
+#scene-2 .cloud-right {
+  top: 23%;
+  right: 12%;
+}
+
+/* Floating hearts */
+#scene-2 .heart-a {
+  top: 32%;
+  left: 20%;
+  font-size: 28px;
+}
+
+#scene-2 .heart-b {
+  top: 17%;
+  right: 27%;
+  font-size: 22px;
+}
+
+/* Pixel grass */
+#scene-2 .scene2-ground {
+  height: 28%;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.09) 0px,
+      rgba(255,255,255,0.09) 8px,
+      transparent 8px,
+      transparent 16px
+    ),
+    #83c66d;
+
+  border-top: 7px solid #a9dc8e;
+
+  z-index: 1;
+}
+
+/* Keep card above grass */
+#scene-2 .game-dialog {
+  transform: translateY(-25px);
+}
+
+
+/* iPad */
+@media (max-width: 1100px) {
+
+  #scene-2 .game-dialog {
+    width: 68%;
+    max-width: 500px;
+  }
+
+}
+
+
+/* Phone */
+@media (max-width: 600px) {
+
+  #scene-2 .game-dialog {
+    width: 78%;
+    padding: 26px 18px;
+    transform: translateY(-15px);
+  }
+
+  #scene-2 .game-dialog h2 {
+    font-size: 28px;
+  }
+
+  #scene-2 .game-dialog p {
+    font-size: 13px;
+  }
+
+  #scene-2 .scene2-cloud {
+    transform: scale(0.65);
+  }
+
+  #scene-2 .cloud-left {
+    left: 2%;
+  }
+
+  #scene-2 .cloud-right {
+    right: 4%;
+  }
+}
