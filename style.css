@@ -1,5 +1,5 @@
 /* =========================================================
-   BASIC RESET
+   RESET
 ========================================================= */
 
 * {
@@ -23,7 +23,7 @@ body {
 
 
 /* =========================================================
-   GAME WORLD
+   MAIN GAME WORLD
 ========================================================= */
 
 .game-world {
@@ -43,7 +43,7 @@ body {
 }
 
 
-/* tiny sky pixels */
+/* SKY PIXELS */
 
 .sky-dots {
   position: absolute;
@@ -68,9 +68,12 @@ body {
 
 .pixel-cloud {
   position: absolute;
+
   width: 155px;
   height: 35px;
+
   background: rgba(255,255,255,0.78);
+
   box-shadow:
     24px -18px 0 rgba(255,255,255,0.78),
     65px -12px 0 rgba(255,255,255,0.78),
@@ -96,9 +99,13 @@ body {
 
 .floating-heart {
   position: absolute;
+
   font-size: 28px;
+
   color: rgba(255,255,255,0.5);
-  animation: floatHeart 4s ease-in-out infinite;
+
+  animation:
+    floatHeart 4s ease-in-out infinite;
 }
 
 .heart-1 {
@@ -118,7 +125,9 @@ body {
   animation-delay: 2s;
 }
 
+
 @keyframes floatHeart {
+
   0%,
   100% {
     transform: translateY(0);
@@ -127,6 +136,7 @@ body {
   50% {
     transform: translateY(-12px);
   }
+
 }
 
 
@@ -136,10 +146,13 @@ body {
 
 .ground {
   position: absolute;
+
   left: 0;
   right: 0;
   bottom: 0;
+
   height: 26%;
+
   background: #7aca65;
 }
 
@@ -158,11 +171,13 @@ body {
 
 .flower-row {
   text-align: center;
+
   padding-top: 35px;
 
   color: #fff3d7;
 
   font-size: 19px;
+
   letter-spacing: 13px;
 }
 
@@ -174,6 +189,7 @@ body {
 .scene {
   position: fixed;
   inset: 0;
+
   z-index: 5;
 
   display: none;
@@ -188,10 +204,14 @@ body {
 
 .scene.active {
   display: flex;
-  animation: sceneFade 0.45s ease;
+
+  animation:
+    sceneFade 0.45s ease;
 }
 
+
 @keyframes sceneFade {
+
   from {
     opacity: 0;
     transform: scale(0.985);
@@ -201,6 +221,7 @@ body {
     opacity: 1;
     transform: scale(1);
   }
+
 }
 
 
@@ -228,6 +249,7 @@ body {
   color: #cc5c91;
 
   font-family: Georgia, serif;
+
   font-weight: bold;
 
   text-shadow:
@@ -235,21 +257,25 @@ body {
 }
 
 .big-title {
-  font-size: clamp(48px, 7vw, 78px);
+  font-size:
+    clamp(48px, 7vw, 78px);
 }
 
 .big-title.smaller {
-  font-size: clamp(38px, 6vw, 64px);
+  font-size:
+    clamp(38px, 6vw, 64px);
 }
 
 .page-title {
-  font-size: clamp(38px, 5vw, 62px);
+  font-size:
+    clamp(38px, 5vw, 62px);
 }
 
 .subtitle {
   margin: 0 0 28px;
 
   font-size: 17px;
+
   letter-spacing: 2px;
 
   color: #967688;
@@ -261,16 +287,17 @@ body {
 ========================================================= */
 
 .pixel-panel {
-  background: rgba(255,253,253,0.97);
+  background:
+    rgba(255,253,253,0.97);
 
-  border: 5px solid #fff;
+  border:
+    5px solid #fff;
 
-  outline: 3px solid #c75b8e;
+  outline:
+    3px solid #c75b8e;
 
   box-shadow:
     12px 12px 0 #b64f81;
-
-  border-radius: 0;
 }
 
 
@@ -286,13 +313,17 @@ body {
   padding: 17px 28px;
 
   border: 4px solid #fff;
+
   outline: none;
 
   background: #e27baa;
+
   color: white;
 
   font-family: Georgia, serif;
+
   font-size: 17px;
+
   font-weight: bold;
 
   cursor: pointer;
@@ -306,6 +337,7 @@ body {
     background 0.12s ease;
 }
 
+
 .pixel-btn::before {
   content: "";
 
@@ -317,18 +349,24 @@ body {
   width: 40px;
   height: 4px;
 
-  background: rgba(255,255,255,0.45);
+  background:
+    rgba(255,255,255,0.45);
 }
+
 
 .pixel-btn:hover {
   background: #d96c9f;
 }
 
+
 .pixel-btn:active {
-  transform: translate(5px, 5px);
+  transform:
+    translate(5px, 5px);
+
   box-shadow:
     2px 2px 0 #ad4b79;
 }
+
 
 .hidden {
   display: none !important;
@@ -340,16 +378,19 @@ body {
 ========================================================= */
 
 .intro-layout {
-  width: min(1050px, 90vw);
+  width:
+    min(1050px, 90vw);
 
   display: grid;
 
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns:
+    1.15fr 0.85fr;
 
   align-items: end;
 
   gap: 40px;
 }
+
 
 .speech-box {
   min-height: 310px;
@@ -357,41 +398,55 @@ body {
   padding: 48px;
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
 }
+
 
 .typewriter-text {
   min-height: 115px;
 
   margin-bottom: 25px;
 
-  font-size: clamp(17px, 2vw, 22px);
+  font-size:
+    clamp(17px, 2vw, 22px);
+
   line-height: 1.9;
 
   color: #755b69;
 }
 
+
 .intro-character-wrap {
   display: flex;
+
   align-items: flex-end;
+
   justify-content: center;
 }
+
 
 .intro-character {
   display: block;
 
   max-width: 100%;
+
   max-height: 520px;
 
   object-fit: contain;
 
-  image-rendering: auto;
-
-  animation: characterBounce 2.5s ease-in-out infinite;
+  animation:
+    characterBounce
+    2.5s
+    ease-in-out
+    infinite;
 }
 
+
 @keyframes characterBounce {
+
   0%,
   100% {
     transform: translateY(0);
@@ -400,6 +455,7 @@ body {
   50% {
     transform: translateY(-10px);
   }
+
 }
 
 
@@ -415,6 +471,7 @@ body {
   margin-bottom: 8vh;
 }
 
+
 .level-tag {
   position: absolute;
 
@@ -425,15 +482,18 @@ body {
 
   background: white;
 
-  border: 3px solid #c55c8c;
+  border:
+    3px solid #c55c8c;
 
-  box-shadow: 6px 6px 0 #ad4d7b;
+  box-shadow:
+    6px 6px 0 #ad4d7b;
 
   font-weight: bold;
 
   letter-spacing: 3px;
 
-  transform: rotate(-2deg);
+  transform:
+    rotate(-2deg);
 }
 
 
@@ -442,34 +502,43 @@ body {
 ========================================================= */
 
 .main-card {
-  width: min(620px, 84vw);
+  width:
+    min(620px, 84vw);
 
-  padding: 55px 40px;
+  padding:
+    55px 40px;
 
   text-align: center;
 }
 
+
 .main-card h1 {
-  margin: 12px 0 22px;
+  margin:
+    12px 0 22px;
 
   font-family: Georgia, serif;
 
   color: #c9588d;
 
-  font-size: clamp(34px, 5vw, 52px);
+  font-size:
+    clamp(34px, 5vw, 52px);
 
   text-shadow:
     3px 3px 0 #f5d1df;
 }
 
+
 .main-card p:not(.tiny-title) {
-  margin: 0 0 30px;
+  margin:
+    0 0 30px;
 
   font-size: 17px;
+
   line-height: 1.7;
 
   letter-spacing: 2px;
 }
+
 
 .large-heart {
   color: #d46b9b;
@@ -485,15 +554,18 @@ body {
 ========================================================= */
 
 .quest-container {
-  width: min(800px, 88vw);
+  width:
+    min(800px, 88vw);
 
   text-align: center;
 }
+
 
 .quest-status {
   display: flex;
 
   justify-content: space-between;
+
   align-items: center;
 
   margin-bottom: 22px;
@@ -501,28 +573,34 @@ body {
   color: #9a6680;
 
   font-size: 13px;
+
   font-weight: bold;
 
   letter-spacing: 3px;
 }
 
+
 .question-box {
-  padding: 40px 30px;
+  padding:
+    40px 30px;
 
   margin-bottom: 35px;
 }
+
 
 .question-box h2 {
   margin: 0;
 
   color: #a15b7b;
 
-  font-size: clamp(21px, 3vw, 31px);
+  font-size:
+    clamp(21px, 3vw, 31px);
 
   line-height: 1.45;
 
   letter-spacing: 2px;
 }
+
 
 .answer-grid {
   display: flex;
@@ -534,10 +612,12 @@ body {
   gap: 25px;
 }
 
+
 .answer-grid .pixel-btn {
   min-width: 190px;
 
-  font-family: "Courier New", monospace;
+  font-family:
+    "Courier New", monospace;
 
   font-size: 14px;
 
@@ -550,29 +630,38 @@ body {
 ========================================================= */
 
 .result-screen {
-  width: min(650px, 88vw);
+  width:
+    min(650px, 88vw);
 
   text-align: center;
 }
 
+
 .result-image {
   display: block;
 
-  max-width: min(330px, 70vw);
+  max-width:
+    min(330px, 70vw);
+
   max-height: 390px;
 
-  margin: 0 auto 18px;
+  margin:
+    0 auto 18px;
 
   object-fit: contain;
 
-  border: 7px solid white;
+  border:
+    7px solid white;
 
   box-shadow:
-    9px 9px 0 rgba(180,76,126,0.55);
+    9px 9px 0
+    rgba(180,76,126,0.55);
 }
 
+
 .result-title {
-  margin: 15px 0 5px;
+  margin:
+    15px 0 5px;
 
   color: #c6588b;
 
@@ -584,8 +673,10 @@ body {
     3px 3px 0 white;
 }
 
+
 .result-screen p {
-  margin: 8px 0 22px;
+  margin:
+    8px 0 22px;
 
   font-size: 14px;
 
@@ -603,16 +694,20 @@ body {
   overflow-y: auto;
 
   padding-top: 70px;
+
   padding-bottom: 100px;
 }
 
+
 .memory-page {
-  width: min(1000px, 92vw);
+  width:
+    min(1000px, 92vw);
 
   text-align: center;
 
   padding-bottom: 90px;
 }
+
 
 .memory-grid {
   display: grid;
@@ -620,25 +715,32 @@ body {
   grid-template-columns:
     repeat(3, minmax(0, 1fr));
 
-  gap: 42px 34px;
+  gap:
+    42px 34px;
 
-  margin: 55px auto 45px;
+  margin:
+    55px auto 45px;
 }
 
+
 .polaroid {
-  padding: 13px 13px 19px;
+  padding:
+    13px 13px 19px;
 
   background: #fff;
 
   box-shadow:
     9px 9px 0 #b6507f;
 
-  border: 2px solid rgba(204,92,145,0.25);
+  border:
+    2px solid
+    rgba(204,92,145,0.25);
 
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
+
 
 .polaroid:hover {
   transform:
@@ -649,6 +751,7 @@ body {
   box-shadow:
     12px 14px 0 #b6507f;
 }
+
 
 .polaroid img,
 .polaroid video {
@@ -663,12 +766,21 @@ body {
   background: #f7ccdc;
 }
 
+
+/* Videos are decorative autoplay memories */
+
+.polaroid video {
+  pointer-events: none;
+}
+
+
 .polaroid span {
   display: block;
 
   padding-top: 17px;
 
   font-size: 12px;
+
   font-weight: bold;
 
   letter-spacing: 2px;
@@ -676,21 +788,30 @@ body {
   color: #805a6c;
 }
 
+
 .tilt-left {
-  transform: rotate(-3deg);
+  transform:
+    rotate(-3deg);
 }
+
 
 .tilt-right {
-  transform: rotate(3deg);
+  transform:
+    rotate(3deg);
 }
+
 
 .tilt-left-small {
-  transform: rotate(-1.5deg);
+  transform:
+    rotate(-1.5deg);
 }
 
+
 .tilt-right-small {
-  transform: rotate(1.5deg);
+  transform:
+    rotate(1.5deg);
 }
+
 
 .memory-next {
   margin-top: 20px;
@@ -698,110 +819,720 @@ body {
 
 
 /* =========================================================
-   UNIVERSE
+   UNIVERSE / JUST US
 ========================================================= */
 
 .universe-scene {
+  position: fixed;
+
+  inset: 0;
+
+  overflow: hidden;
+
   background:
     linear-gradient(
       to bottom,
-      rgba(147,218,248,0.95) 0%,
-      rgba(185,231,249,0.95) 74%,
-      rgba(108,201,88,0.98) 74%,
-      rgba(108,201,88,0.98) 100%
+      #a8def4 0%,
+      #b9e7f7 67%,
+      #8ad172 67%,
+      #70c65d 100%
     );
 }
 
-.universe-content {
-  width: min(920px, 92vw);
 
-  text-align: center;
+/* little pixels in blue sky */
+
+.universe-scene::before {
+  content: "";
+
+  position: absolute;
+
+  inset:
+    0 0 33% 0;
+
+  pointer-events: none;
+
+  opacity: 0.35;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,0.95) 2px,
+      transparent 2px
+    );
+
+  background-size:
+    65px 65px;
 }
 
-.couple-area {
+
+/* grass line */
+
+.universe-scene::after {
+  content: "";
+
+  position: absolute;
+
+  z-index: 1;
+
+  left: 0;
+  right: 0;
+
+  bottom: 31%;
+
+  height: 17px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #72c85e 0 11px,
+      #94db7c 11px 22px
+    );
+
+  border-top:
+    4px solid #a7e48d;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   UNIVERSE MAIN CONTENT
+========================================================= */
+
+.universe-content {
+  position: relative;
+
+  z-index: 10;
+
+  width:
+    min(1050px, 94vw);
+
+  height: 100%;
+
   display: flex;
 
+  flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
 
-  gap: clamp(40px, 8vw, 130px);
+  text-align: center;
 
-  margin: 35px 0 35px;
+  padding-top: 20px;
 }
 
-.person {
-  width: 190px;
+
+.universe-small-title {
+  margin-bottom: 5px;
+
+  color: #855c72;
+}
+
+
+.universe-title {
+  margin:
+    5px 0 8px;
+
+  font-size:
+    clamp(45px, 5.5vw, 72px);
+}
+
+
+/* =========================================================
+   UNIVERSE CHARACTERS
+========================================================= */
+
+.couple-area {
+  position: relative;
+
+  z-index: 5;
+
+  width:
+    min(700px, 85vw);
 
   display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  gap: 16px;
+  align-items: flex-end;
+
+  justify-content: center;
+
+  gap: 45px;
+
+  margin:
+    0 auto 12px;
 }
 
+
+.person {
+  width: 240px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: flex-end;
+}
+
+
+.character-glow {
+  position: relative;
+
+  width: 230px;
+
+  height: 245px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: center;
+}
+
+
+.character-glow::before {
+  content: "";
+
+  position: absolute;
+
+  width: 160px;
+
+  height: 160px;
+
+  left: 50%;
+
+  bottom: 18px;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,0.20);
+
+  filter: blur(8px);
+}
+
+
 .person img {
-  width: 170px;
-  height: 190px;
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 220px;
+
+  height: 240px;
 
   object-fit: contain;
 
-  image-rendering: pixelated;
+  object-position:
+    center bottom;
+
+  filter:
+    drop-shadow(
+      4px 6px 0
+      rgba(79,143,107,0.16)
+    );
 }
 
+
 .person span {
+  margin-top: 5px;
+
+  color: #895d73;
+
   font-size: 13px;
+
   font-weight: bold;
 
   letter-spacing: 5px;
-
-  color: #8c5b73;
 }
 
+
+/* HEART BETWEEN CHARACTERS */
+
 .between-heart {
-  color: #ce6395;
+  align-self: center;
+
+  margin-bottom: 60px;
+
+  color: #d06498;
 
   font-size: 58px;
 
-  animation: heartPulse 1.4s ease-in-out infinite;
+  line-height: 1;
+
+  text-shadow:
+    3px 3px 0
+    rgba(255,255,255,0.75);
+
+  animation:
+    universeHeartPulse
+    1.4s
+    ease-in-out
+    infinite;
 }
 
-@keyframes heartPulse {
+
+@keyframes universeHeartPulse {
+
   0%,
   100% {
     transform: scale(1);
   }
 
   50% {
-    transform: scale(1.16);
+    transform: scale(1.17);
   }
+
 }
+
+
+/* =========================================================
+   UNIVERSE QUESTION
+========================================================= */
 
 .universe-question {
-  width: min(760px, 88vw);
+  position: relative;
 
-  margin: 0 auto;
+  z-index: 15;
 
-  padding: 30px 25px;
+  width:
+    min(820px, 88vw);
+
+  margin:
+    5px auto 0;
+
+  padding:
+    25px 25px 27px;
 }
 
+
 .universe-question p {
-  margin: 0 0 25px;
+  margin:
+    0 0 22px;
+
+  color: #836b78;
 
   font-size: 17px;
 
   letter-spacing: 2px;
 }
 
+
 .universe-buttons {
   display: flex;
 
+  align-items: center;
+
   justify-content: center;
 
-  gap: 30px;
+  gap: 35px;
 }
+
+
+.universe-buttons .pixel-btn {
+  min-width: 155px;
+}
+
 
 .no-btn {
   position: relative;
+
+  transition:
+    transform 0.15s ease;
+}
+
+
+/* =========================================================
+   UNIVERSE DECORATION LAYER
+========================================================= */
+
+.universe-decor {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   UNIVERSE CLOUDS
+========================================================= */
+
+.u-cloud {
+  position: absolute;
+
+  width: 130px;
+
+  height: 30px;
+
+  background:
+    rgba(255,255,255,0.78);
+
+  box-shadow:
+    22px -18px 0 rgba(255,255,255,0.78),
+    55px -10px 0 rgba(255,255,255,0.78),
+    85px 0 0 rgba(255,255,255,0.78),
+    8px 7px 0 rgba(89,157,182,0.10);
+}
+
+
+.u-cloud-1 {
+  top: 20%;
+  left: 7%;
+
+  transform:
+    scale(0.9);
+}
+
+
+.u-cloud-2 {
+  top: 24%;
+  right: 8%;
+
+  transform:
+    scale(0.75);
+}
+
+
+.u-cloud-3 {
+  top: 12%;
+  right: 35%;
+
+  transform:
+    scale(0.42);
+
+  opacity: 0.65;
+}
+
+
+/* =========================================================
+   UNIVERSE HEARTS
+========================================================= */
+
+.u-heart {
+  position: absolute;
+
+  color:
+    rgba(208,100,152,0.45);
+
+  font-size: 30px;
+
+  animation:
+    universeFloat
+    3.5s
+    ease-in-out
+    infinite;
+}
+
+
+.u-heart-1 {
+  top: 34%;
+  left: 14%;
+}
+
+
+.u-heart-2 {
+  top: 27%;
+  right: 19%;
+
+  font-size: 22px;
+
+  animation-delay: 1s;
+}
+
+
+.u-heart-3 {
+  top: 45%;
+  right: 8%;
+
+  font-size: 26px;
+
+  animation-delay: 2s;
+}
+
+
+@keyframes universeFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-10px);
+  }
+
+}
+
+
+/* =========================================================
+   UNIVERSE SPARKLES
+========================================================= */
+
+.u-sparkle {
+  position: absolute;
+
+  color:
+    rgba(255,255,255,0.85);
+
+  font-size: 19px;
+
+  animation:
+    sparkleBlink
+    1.8s
+    ease-in-out
+    infinite;
+}
+
+
+.u-sparkle-1 {
+  top: 20%;
+  left: 29%;
+}
+
+
+.u-sparkle-2 {
+  top: 37%;
+  left: 7%;
+
+  animation-delay: 0.4s;
+}
+
+
+.u-sparkle-3 {
+  top: 18%;
+  right: 26%;
+
+  animation-delay: 0.8s;
+}
+
+
+.u-sparkle-4 {
+  top: 40%;
+  right: 11%;
+
+  animation-delay: 1.2s;
+}
+
+
+@keyframes sparkleBlink {
+
+  0%,
+  100% {
+    opacity: 0.25;
+
+    transform:
+      scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1.2);
+  }
+
+}
+
+
+/* =========================================================
+   UNIVERSE BUSHES
+========================================================= */
+
+.u-bush {
+  position: absolute;
+
+  bottom: 4%;
+
+  width: 115px;
+
+  height: 42px;
+
+  background: #5ab851;
+
+  box-shadow:
+    25px -22px 0 #64c25a,
+    62px -12px 0 #60bd56,
+    90px 0 0 #55ae4d;
+}
+
+
+.bush-1 {
+  left: 3%;
+}
+
+
+.bush-2 {
+  right: 6%;
+
+  transform:
+    scaleX(-1);
+}
+
+
+/* =========================================================
+   UNIVERSE MUSHROOMS
+========================================================= */
+
+.u-mushroom {
+  position: absolute;
+
+  bottom: 7%;
+
+  width: 40px;
+
+  height: 45px;
+}
+
+
+.mushroom-1 {
+  left: 15%;
+}
+
+
+.mushroom-2 {
+  right: 15%;
+
+  transform:
+    scale(0.8);
+}
+
+
+.mushroom-top {
+  position: absolute;
+
+  top: 0;
+  left: 3px;
+
+  width: 34px;
+
+  height: 18px;
+
+  background: #e873a5;
+
+  border-radius:
+    18px 18px 4px 4px;
+
+  border:
+    3px solid
+    rgba(255,255,255,0.8);
+}
+
+
+.mushroom-top::before,
+.mushroom-top::after {
+  content: "";
+
+  position: absolute;
+
+  top: 4px;
+
+  width: 5px;
+
+  height: 5px;
+
+  background: white;
+}
+
+
+.mushroom-top::before {
+  left: 6px;
+}
+
+
+.mushroom-top::after {
+  right: 6px;
+}
+
+
+.mushroom-stem {
+  position: absolute;
+
+  bottom: 0;
+  left: 14px;
+
+  width: 13px;
+
+  height: 25px;
+
+  background: #fff5e6;
+}
+
+
+/* =========================================================
+   UNIVERSE FLOWERS
+========================================================= */
+
+.u-flower {
+  position: absolute;
+
+  bottom: 8%;
+
+  color: #fff3c7;
+
+  font-size: 17px;
+
+  letter-spacing: 8px;
+}
+
+
+.flowers-left {
+  left: 28%;
+}
+
+
+.flowers-right {
+  right: 27%;
+}
+
+
+/* =========================================================
+   UNIVERSE SIGN
+========================================================= */
+
+.universe-sign {
+  position: absolute;
+
+  left: 5%;
+
+  bottom: 18%;
+
+  padding:
+    9px 15px;
+
+  background: #fff;
+
+  border:
+    3px solid #c65d8e;
+
+  color: #895d73;
+
+  font-size: 11px;
+
+  font-weight: bold;
+
+  letter-spacing: 3px;
+
+  box-shadow:
+    5px 5px 0 #b04e7c;
+
+  transform:
+    rotate(-3deg);
 }
 
 
@@ -810,7 +1541,8 @@ body {
 ========================================================= */
 
 .birthday-card {
-  width: min(720px, 88vw);
+  width:
+    min(720px, 88vw);
 }
 
 
@@ -824,18 +1556,22 @@ body {
   overflow: hidden;
 }
 
+
 .letter-wrapper {
   position: relative;
 
-  width: min(760px, 92vw);
+  width:
+    min(760px, 92vw);
 }
+
 
 .final-letter {
   width: 100%;
 
   max-height: 86vh;
 
-  padding: 45px 55px;
+  padding:
+    45px 55px;
 
   overflow-y: auto;
 
@@ -844,31 +1580,37 @@ body {
   scrollbar-width: thin;
 
   scrollbar-color:
-    #d26b9c
-    #f9dbe6;
+    #d26b9c #f9dbe6;
 }
+
 
 .final-letter::-webkit-scrollbar {
   width: 9px;
 }
 
+
 .final-letter::-webkit-scrollbar-track {
   background: #f9dbe6;
 }
+
 
 .final-letter::-webkit-scrollbar-thumb {
   background: #d26b9c;
 }
 
+
 .final-letter h1 {
-  margin: 10px 0 35px;
+  margin:
+    10px 0 35px;
 
   color: #c85b8e;
 
   font-family: Georgia, serif;
 
-  font-size: clamp(29px, 4vw, 43px);
+  font-size:
+    clamp(29px, 4vw, 43px);
 }
+
 
 .letter-body {
   text-align: left;
@@ -882,33 +1624,43 @@ body {
   line-height: 2;
 }
 
+
 .letter-body p {
-  margin: 0 0 28px;
+  margin:
+    0 0 28px;
 }
 
+
 .final-photo-frame {
-  width: min(380px, 90%);
+  width:
+    min(380px, 90%);
 
-  margin: 35px auto;
+  margin:
+    35px auto;
 
-  padding: 12px 12px 35px;
+  padding:
+    12px 12px 35px;
 
   background: white;
 
   box-shadow:
     8px 8px 0 #c65c8e;
 
-  transform: rotate(-2deg);
+  transform:
+    rotate(-2deg);
 }
+
 
 .final-photo-frame img {
   display: block;
 
   width: 100%;
+
   max-height: 430px;
 
   object-fit: cover;
 }
+
 
 .letter-highlight {
   text-align: center;
@@ -920,8 +1672,10 @@ body {
   font-weight: bold;
 }
 
+
 .signature {
-  margin-top: 45px !important;
+  margin-top:
+    45px !important;
 
   text-align: right;
 
@@ -929,6 +1683,7 @@ body {
 
   font-size: 20px;
 }
+
 
 .letter-deco {
   position: absolute;
@@ -942,10 +1697,12 @@ body {
   pointer-events: none;
 }
 
+
 .flower-left {
   left: -55px;
   top: 12%;
 }
+
 
 .flower-right {
   right: -55px;
@@ -954,7 +1711,48 @@ body {
 
 
 /* =========================================================
-   MOBILE / IPAD
+   IPAD
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .universe-content {
+    width: 94vw;
+  }
+
+
+  .couple-area {
+    width: 650px;
+
+    max-width: 85vw;
+
+    gap: 30px;
+  }
+
+
+  .person {
+    width: 215px;
+  }
+
+
+  .character-glow {
+    width: 210px;
+
+    height: 225px;
+  }
+
+
+  .person img {
+    width: 200px;
+
+    height: 220px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
 ========================================================= */
 
 @media (max-width: 800px) {
@@ -962,6 +1760,7 @@ body {
   .scene {
     padding: 22px;
   }
+
 
   .intro-layout {
     width: 92vw;
@@ -973,47 +1772,39 @@ body {
     text-align: center;
   }
 
+
   .speech-box {
     min-height: 250px;
 
-    padding: 30px 24px;
+    padding:
+      30px 24px;
   }
+
 
   .intro-character {
     max-height: 260px;
   }
 
+
   .intro-character-wrap {
     order: -1;
   }
+
 
   .memory-grid {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
 
-    gap: 32px 24px;
+    gap:
+      32px 24px;
   }
 
-  .couple-area {
-    gap: 30px;
-  }
-
-  .person {
-    width: 130px;
-  }
-
-  .person img {
-    width: 125px;
-    height: 145px;
-  }
-
-  .between-heart {
-    font-size: 42px;
-  }
 
   .final-letter {
-    padding: 35px 28px;
+    padding:
+      35px 28px;
   }
+
 
   .letter-deco {
     display: none;
@@ -1026,7 +1817,7 @@ body {
    PHONE
 ========================================================= */
 
-@media (max-width: 520px) {
+@media (max-width: 600px) {
 
   .tiny-title {
     font-size: 10px;
@@ -1034,21 +1825,27 @@ body {
     letter-spacing: 3px;
   }
 
+
   .cloud-left {
     left: -35px;
 
-    transform: scale(0.65);
+    transform:
+      scale(0.65);
   }
+
 
   .cloud-right {
     right: -45px;
 
-    transform: scale(0.6);
+    transform:
+      scale(0.6);
   }
+
 
   .ground {
     height: 20%;
   }
+
 
   .game-world {
     background:
@@ -1061,49 +1858,158 @@ body {
       );
   }
 
+
+  /* MEMORY */
+
   .memory-grid {
     grid-template-columns: 1fr;
 
-    width: min(330px, 90vw);
+    width:
+      min(330px, 90vw);
 
     margin-left: auto;
+
     margin-right: auto;
   }
+
 
   .polaroid {
     transform: none;
   }
 
-  .couple-area {
-    gap: 10px;
+
+  /* UNIVERSE */
+
+  .universe-content {
+    padding-top: 5px;
   }
+
+
+  .universe-title {
+    font-size: 42px;
+
+    margin-bottom: 5px;
+  }
+
+
+  .couple-area {
+    width: 95vw;
+
+    gap: 5px;
+
+    margin-bottom: 12px;
+  }
+
 
   .person {
-    width: 110px;
+    width: 135px;
   }
 
-  .person img {
-    width: 105px;
-    height: 125px;
+
+  .character-glow {
+    width: 135px;
+
+    height: 165px;
   }
+
+
+  .person img {
+    width: 135px;
+
+    height: 165px;
+  }
+
+
+  .person span {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+  }
+
+
+  .between-heart {
+    margin-bottom: 45px;
+
+    font-size: 38px;
+  }
+
+
+  .universe-question {
+    width: 91vw;
+
+    padding:
+      20px 15px;
+  }
+
+
+  .universe-question p {
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+
 
   .universe-buttons {
     gap: 15px;
   }
 
+
   .universe-buttons .pixel-btn {
     min-width: 115px;
 
-    padding: 14px 18px;
+    padding:
+      14px 16px;
   }
 
-  .question-box {
-    padding: 30px 20px;
+
+  .u-cloud-1 {
+    left: -40px;
+
+    transform:
+      scale(0.55);
   }
+
+
+  .u-cloud-2 {
+    right: -45px;
+
+    transform:
+      scale(0.5);
+  }
+
+
+  .u-cloud-3 {
+    display: none;
+  }
+
+
+  .universe-sign {
+    bottom: 13%;
+
+    transform:
+      scale(0.8)
+      rotate(-3deg);
+  }
+
+
+  .flowers-left,
+  .flowers-right {
+    display: none;
+  }
+
+
+  /* QUESTIONS */
+
+  .question-box {
+    padding:
+      30px 20px;
+  }
+
 
   .answer-grid {
     gap: 17px;
   }
+
 
   .answer-grid .pixel-btn {
     width: 100%;
@@ -1111,11 +2017,16 @@ body {
     min-width: 0;
   }
 
+
+  /* LETTER */
+
   .final-letter {
     max-height: 82vh;
 
-    padding: 30px 20px;
+    padding:
+      30px 20px;
   }
+
 
   .letter-body {
     font-size: 15px;
@@ -1127,32 +2038,66 @@ body {
 
 
 /* =========================================================
-   LANDSCAPE SHORT SCREEN
+   SHORT SCREEN / LANDSCAPE
 ========================================================= */
 
-@media (max-height: 650px) {
+@media (max-height: 750px) {
 
   .intro-character {
     max-height: 300px;
   }
 
+
   .main-card {
     padding-top: 30px;
+
     padding-bottom: 30px;
   }
 
-  .couple-area {
-    margin-top: 15px;
-    margin-bottom: 18px;
+
+  .universe-small-title {
+    margin-bottom: 0;
   }
+
+
+  .universe-title {
+    font-size: 46px;
+
+    margin:
+      2px 0 3px;
+  }
+
+
+  .couple-area {
+    margin-bottom: 5px;
+  }
+
+
+  .character-glow {
+    height: 185px;
+  }
+
 
   .person img {
-    height: 125px;
+    width: 190px;
+
+    height: 185px;
   }
 
+
+  .between-heart {
+    margin-bottom: 45px;
+  }
+
+
   .universe-question {
-    padding-top: 18px;
-    padding-bottom: 18px;
+    padding:
+      18px 20px 20px;
+  }
+
+
+  .universe-question p {
+    margin-bottom: 15px;
   }
 
 }
