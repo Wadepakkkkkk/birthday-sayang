@@ -2,11 +2,16 @@
    GLOBAL
 ========================================================= */
 
-const bgMusic = document.getElementById("bgMusic");
-const correctImage = document.getElementById("correctImage");
+const bgMusic =
+  document.getElementById("bgMusic");
+
+const correctImage =
+  document.getElementById("correctImage");
 
 let currentQuest = 1;
+
 let noClicks = 0;
+
 let finalLetterPlayed = false;
 
 
@@ -16,46 +21,84 @@ let finalLetterPlayed = false;
 
 function showScene(sceneId) {
 
-  document.querySelectorAll(".scene").forEach(function(scene) {
-    scene.classList.remove("active");
-  });
+  document
+    .querySelectorAll(".scene")
+    .forEach(function(scene) {
 
-  const target = document.getElementById(sceneId);
+      scene.classList.remove("active");
+
+    });
+
+
+  const target =
+    document.getElementById(sceneId);
+
 
   if (!target) {
-    console.error("Scene not found:", sceneId);
+
+    console.error(
+      "Scene not found:",
+      sceneId
+    );
+
     return;
+
   }
+
 
   target.classList.add("active");
 
 
-  /* MEMORY VIDEO AUTOPLAY */
+  /* =================================
+     MEMORY VIDEO AUTOPLAY
+  ================================= */
 
   const memoryVideos =
-    document.querySelectorAll("#memoryScene video");
+    document.querySelectorAll(
+      "#memoryScene video"
+    );
+
 
   if (sceneId === "memoryScene") {
 
-    memoryVideos.forEach(function(video) {
+    memoryVideos.forEach(
+      function(video) {
 
-      video.muted = true;
-      video.loop = true;
-      video.playsInline = true;
+        video.muted = true;
 
-      const playPromise = video.play();
+        video.loop = true;
 
-      if (playPromise !== undefined) {
-        playPromise.catch(function() {});
+        video.playsInline = true;
+
+
+        const playPromise =
+          video.play();
+
+
+        if (
+          playPromise !== undefined
+        ) {
+
+          playPromise.catch(
+            function() {}
+          );
+
+        }
+
       }
+    );
 
-    });
+  }
 
-  } else {
+  else {
 
-    memoryVideos.forEach(function(video) {
-      video.pause();
-    });
+    memoryVideos.forEach(
+      function(video) {
+
+        video.pause();
+
+      }
+    );
 
   }
 
@@ -68,52 +111,70 @@ function showScene(sceneId) {
 
 function startMusic() {
 
-  if (!bgMusic) return;
+  if (!bgMusic) {
+    return;
+  }
+
 
   bgMusic.volume = 0.45;
 
-  const playPromise = bgMusic.play();
 
-  if (playPromise !== undefined) {
-    playPromise.catch(function() {});
+  const playPromise =
+    bgMusic.play();
+
+
+  if (
+    playPromise !== undefined
+  ) {
+
+    playPromise.catch(
+      function() {}
+    );
+
   }
 
 }
 
 
 /* =========================================================
-   INTRO
+   INTRO -> READY
 ========================================================= */
 
 function startGame() {
 
   startMusic();
 
-  showScene("readyScene");
+  showScene(
+    "readyScene"
+  );
 
 }
 
 
 /* =========================================================
-   READY
+   READY -> WELCOME
 ========================================================= */
 
 function showWelcome() {
 
-  showScene("welcomeScene");
+  showScene(
+    "welcomeScene"
+  );
 
 }
 
 
 /* =========================================================
-   START QUEST
+   WELCOME -> QUEST 1
 ========================================================= */
 
 function startQuest() {
 
   currentQuest = 1;
 
-  showScene("quest1");
+  showScene(
+    "quest1"
+  );
 
 }
 
@@ -122,11 +183,17 @@ function startQuest() {
    WRONG ANSWER
 ========================================================= */
 
-function wrongAnswer(questNumber) {
+function wrongAnswer(
+  questNumber
+) {
 
-  currentQuest = questNumber;
+  currentQuest =
+    questNumber;
 
-  showScene("wrongScene");
+
+  showScene(
+    "wrongScene"
+  );
 
 }
 
@@ -137,7 +204,10 @@ function wrongAnswer(questNumber) {
 
 function tryAgain() {
 
-  showScene("quest" + currentQuest);
+  showScene(
+    "quest" +
+    currentQuest
+  );
 
 }
 
@@ -148,32 +218,58 @@ function tryAgain() {
 
 function createHeartBurst() {
 
-  const burst = document.createElement("div");
+  const burst =
+    document.createElement(
+      "div"
+    );
 
-  burst.className = "heart-burst";
+
+  burst.className =
+    "heart-burst";
 
 
-  for (let i = 0; i < 18; i++) {
+  for (
+    let i = 0;
+    i < 18;
+    i++
+  ) {
 
-    const heart = document.createElement("span");
+    const heart =
+      document.createElement(
+        "span"
+      );
 
-    heart.className = "heart-particle";
+
+    heart.className =
+      "heart-particle";
+
 
     heart.textContent =
-      i % 3 === 0 ? "✦" : "♡";
+      i % 3 === 0
+        ? "✦"
+        : "♡";
 
 
     const angle =
-      Math.random() * Math.PI * 2;
+      Math.random() *
+      Math.PI *
+      2;
+
 
     const distance =
-      80 + Math.random() * 160;
+      80 +
+      Math.random() *
+      160;
+
 
     const x =
-      Math.cos(angle) * distance;
+      Math.cos(angle) *
+      distance;
+
 
     const y =
-      Math.sin(angle) * distance;
+      Math.sin(angle) *
+      distance;
 
 
     heart.style.setProperty(
@@ -181,23 +277,33 @@ function createHeartBurst() {
       x + "px"
     );
 
+
     heart.style.setProperty(
       "--y",
       y + "px"
     );
 
 
-    burst.appendChild(heart);
+    burst.appendChild(
+      heart
+    );
 
   }
 
 
-  document.body.appendChild(burst);
+  document.body.appendChild(
+    burst
+  );
 
 
-  setTimeout(function() {
-    burst.remove();
-  }, 1300);
+  setTimeout(
+    function() {
+
+      burst.remove();
+
+    },
+    1300
+  );
 
 }
 
@@ -206,26 +312,41 @@ function createHeartBurst() {
    CORRECT ANSWER
 ========================================================= */
 
-function correctAnswer(questNumber) {
+function correctAnswer(
+  questNumber
+) {
 
-  currentQuest = questNumber;
+  currentQuest =
+    questNumber;
 
 
   const images = {
+
     1: "correct1.JPG",
+
     2: "correct2.JPG",
+
     3: "correct3.JPG"
+
   };
 
 
   if (correctImage) {
-    correctImage.src = images[questNumber];
+
+    correctImage.src =
+      images[
+        questNumber
+      ];
+
   }
 
 
   createHeartBurst();
 
-  showScene("correctScene");
+
+  showScene(
+    "correctScene"
+  );
 
 }
 
@@ -236,25 +357,37 @@ function correctAnswer(questNumber) {
 
 function nextQuest() {
 
-  if (currentQuest === 1) {
+  if (
+    currentQuest === 1
+  ) {
 
     currentQuest = 2;
 
-    showScene("quest2");
+
+    showScene(
+      "quest2"
+    );
 
   }
 
-  else if (currentQuest === 2) {
+  else if (
+    currentQuest === 2
+  ) {
 
     currentQuest = 3;
 
-    showScene("quest3");
+
+    showScene(
+      "quest3"
+    );
 
   }
 
   else {
 
-    showScene("memoryScene");
+    showScene(
+      "memoryScene"
+    );
 
   }
 
@@ -267,7 +400,9 @@ function nextQuest() {
 
 function showUniverse() {
 
-  showScene("universeScene");
+  showScene(
+    "universeScene"
+  );
 
 }
 
@@ -280,9 +415,17 @@ function yesUniverse() {
 
   createHeartBurst();
 
-  setTimeout(function() {
-    showScene("birthdayScene");
-  }, 350);
+
+  setTimeout(
+    function() {
+
+      showScene(
+        "birthdayScene"
+      );
+
+    },
+    350
+  );
 
 }
 
@@ -294,20 +437,31 @@ function yesUniverse() {
 function moveNoButton() {
 
   const button =
-    document.getElementById("noButton");
+    document.getElementById(
+      "noButton"
+    );
 
-  if (!button) return;
+
+  if (!button) {
+    return;
+  }
 
 
   noClicks++;
 
 
   const messages = [
+
     "NO",
+
     "REALLY?",
+
     "SURE? 😭",
+
     "DEE...",
+
     "TRY AGAIN ♡"
+
   ];
 
 
@@ -321,10 +475,17 @@ function moveNoButton() {
 
 
   const x =
-    Math.floor(Math.random() * 130) - 65;
+    Math.floor(
+      Math.random() *
+      130
+    ) - 65;
+
 
   const y =
-    Math.floor(Math.random() * 80) - 40;
+    Math.floor(
+      Math.random() *
+      80
+    ) - 40;
 
 
   button.style.transform =
@@ -335,13 +496,20 @@ function moveNoButton() {
     "px)";
 
 
-  if (noClicks >= 5) {
+  if (
+    noClicks >= 5
+  ) {
 
-    button.textContent = "YES ♡";
+    button.textContent =
+      "YES ♡";
 
-    button.style.transform = "none";
 
-    button.onclick = yesUniverse;
+    button.style.transform =
+      "none";
+
+
+    button.onclick =
+      yesUniverse;
 
   }
 
@@ -349,19 +517,28 @@ function moveNoButton() {
 
 
 /* =========================================================
-   FINAL LETTER
+   LETTER
 ========================================================= */
 
 function showLetter() {
 
-  showScene("letterScene");
+  showScene(
+    "letterScene"
+  );
 
 
-  if (!finalLetterPlayed) {
+  if (
+    !finalLetterPlayed
+  ) {
 
-    setTimeout(function() {
-      typeFinalLetter();
-    }, 400);
+    setTimeout(
+      function() {
+
+        typeFinalLetter();
+
+      },
+      400
+    );
 
   }
 
@@ -369,12 +546,17 @@ function showLetter() {
 
 
 /* =========================================================
-   FINAL LETTER TYPEWRITER
+   TYPE FINAL LETTER
 ========================================================= */
 
 function typeFinalLetter() {
 
-  if (finalLetterPlayed) return;
+  if (
+    finalLetterPlayed
+  ) {
+    return;
+  }
+
 
   finalLetterPlayed = true;
 
@@ -387,24 +569,38 @@ function typeFinalLetter() {
     );
 
 
-  /* Save text before clearing */
+  /*
+    Save the text first
+  */
 
   const paragraphTexts =
-    paragraphs.map(function(paragraph) {
-      return paragraph.innerText;
-    });
+    paragraphs.map(
+      function(paragraph) {
 
+        return paragraph.innerText;
 
-  paragraphs.forEach(function(paragraph) {
-
-    paragraph.textContent = "";
-
-    paragraph.classList.remove(
-      "reveal-text",
-      "typing-now"
+      }
     );
 
-  });
+
+  /*
+    Clear paragraph text
+  */
+
+  paragraphs.forEach(
+    function(paragraph) {
+
+      paragraph.textContent =
+        "";
+
+
+      paragraph.classList.remove(
+        "reveal-text",
+        "typing-now"
+      );
+
+    }
+  );
 
 
   let paragraphIndex = 0;
@@ -425,10 +621,15 @@ function typeFinalLetter() {
 
 
     const paragraph =
-      paragraphs[paragraphIndex];
+      paragraphs[
+        paragraphIndex
+      ];
+
 
     const text =
-      paragraphTexts[paragraphIndex];
+      paragraphTexts[
+        paragraphIndex
+      ];
 
 
     paragraph.classList.add(
@@ -442,24 +643,36 @@ function typeFinalLetter() {
 
     function typeCharacter() {
 
-      if (charIndex < text.length) {
+      if (
+        charIndex <
+        text.length
+      ) {
 
         paragraph.textContent +=
-          text.charAt(charIndex);
+          text.charAt(
+            charIndex
+          );
+
 
         charIndex++;
 
 
-        const letter =
-          document.querySelector(
-            ".final-letter"
+        /*
+          Scroll down gradually
+        */
+
+        const letterScene =
+          document.getElementById(
+            "letterScene"
           );
 
 
-        if (letter) {
+        if (
+          letterScene
+        ) {
 
-          letter.scrollTop =
-            letter.scrollHeight;
+          letterScene.scrollTop =
+            letterScene.scrollHeight;
 
         }
 
@@ -513,7 +726,9 @@ function addEndButton() {
     );
 
 
-  if (!letter) return;
+  if (!letter) {
+    return;
+  }
 
 
   if (
@@ -526,7 +741,9 @@ function addEndButton() {
 
 
   const button =
-    document.createElement("button");
+    document.createElement(
+      "button"
+    );
 
 
   button.id =
@@ -541,15 +758,13 @@ function addEndButton() {
     "THE END ♡";
 
 
-  button.style.marginTop =
-    "30px";
-
-
   button.onclick =
     showEndScreen;
 
 
-  letter.appendChild(button);
+  letter.appendChild(
+    button
+  );
 
 }
 
@@ -572,7 +787,9 @@ function showEndScreen() {
   if (!screen) {
 
     screen =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
 
 
     screen.id =
@@ -598,23 +815,61 @@ function showEndScreen() {
     `;
 
 
-    document.body.appendChild(screen);
+    document.body.appendChild(
+      screen
+    );
 
   }
 
 
-  screen.classList.add("active");
+  screen.classList.add(
+    "active"
+  );
 
 }
 
 
 /* =========================================================
-   SETUP
+   SETUP BUTTONS
 ========================================================= */
 
 document.addEventListener(
   "DOMContentLoaded",
   function() {
+
+    /*
+      INTRO BUTTON
+      Extra iPhone/iPad touch fallback
+    */
+
+    const introNext =
+      document.getElementById(
+        "introNext"
+      );
+
+
+    if (introNext) {
+
+      introNext.addEventListener(
+        "touchend",
+        function(event) {
+
+          event.preventDefault();
+
+          startGame();
+
+        },
+        {
+          passive: false
+        }
+      );
+
+    }
+
+
+    /*
+      NO BUTTON
+    */
 
     const noButton =
       document.getElementById(
@@ -629,10 +884,24 @@ document.addEventListener(
         moveNoButton
       );
 
-      noButton.addEventListener(
-        "mouseenter",
-        moveNoButton
-      );
+
+      /*
+        Desktop only:
+        NO runs away on hover.
+      */
+
+      if (
+        window.matchMedia(
+          "(hover: hover)"
+        ).matches
+      ) {
+
+        noButton.addEventListener(
+          "mouseenter",
+          moveNoButton
+        );
+
+      }
 
     }
 
