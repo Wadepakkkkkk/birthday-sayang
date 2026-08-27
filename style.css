@@ -2101,3 +2101,82 @@ body {
   }
 
 }
+/* =========================================
+   JUST US - BIGGER CHARACTERS
+========================================= */
+
+.universe-scene .person .character-glow {
+  width: 180px;
+  height: 220px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.universe-scene .person .character-glow img {
+  width: auto;
+  height: 210px;
+  max-width: 180px;
+
+  object-fit: contain;
+  object-position: bottom center;
+
+  image-rendering: auto;
+}
+
+.universe-scene .person {
+  min-width: 200px;
+}
+
+.universe-scene .couple-area {
+  gap: 80px;
+}
+
+
+/* IPAD / TABLET */
+
+@media (max-width: 1100px) {
+
+  .universe-scene .person .character-glow {
+    width: 160px;
+    height: 200px;
+  }
+
+  .universe-scene .person .character-glow img {
+    height: 190px;
+    max-width: 160px;
+  }
+
+  .universe-scene .person {
+    min-width: 170px;
+  }
+
+  .universe-scene .couple-area {
+    gap: 55px;
+  }
+}
+
+
+/* PHONE */
+
+@media (max-width: 600px) {
+
+  .universe-scene .person .character-glow {
+    width: 115px;
+    height: 155px;
+  }
+
+  .universe-scene .person .character-glow img {
+    height: 145px;
+    max-width: 115px;
+  }
+
+  .universe-scene .person {
+    min-width: 120px;
+  }
+
+  .universe-scene .couple-area {
+    gap: 15px;
+  }
+}
