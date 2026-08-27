@@ -1872,3 +1872,53 @@ body {
 .scene.active {
   pointer-events: auto;
 }
+/* =========================================
+   FINAL LETTER FIX
+========================================= */
+
+/* Force text to exist */
+.letter-body > p {
+  visibility: visible !important;
+
+  opacity: 0;
+
+  transform: translateY(12px);
+
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+
+/* Reveal paragraph */
+
+.letter-body > p.letter-show {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* Photo always visible */
+
+.final-photo-frame {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+
+/* Keep highlighted paragraph looking nice */
+
+.letter-highlight {
+  visibility: visible;
+}
+
+
+/* END button */
+
+#endGameButton {
+  display: block;
+
+  margin:
+    35px auto 10px;
+}
