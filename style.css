@@ -2320,3 +2320,96 @@ body {
 
   letter-spacing: 3px;
 }
+/* =========================================
+   FINAL LETTER - TYPEWRITER PROPER
+========================================= */
+
+.letter-body p {
+  visibility: hidden;
+}
+
+.letter-body p.reveal-text {
+  visibility: visible;
+}
+
+.letter-body p.typing-now::after {
+  content: "▌";
+  margin-left: 3px;
+  color: #d45f92;
+
+  animation:
+    cursorBlink 0.7s steps(2) infinite;
+}
+
+@keyframes cursorBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+/* Keep photo visible from the start */
+
+.final-photo-frame {
+  visibility: visible !important;
+}
+
+
+/* END BUTTON */
+
+#endGameButton {
+  display: block;
+
+  margin:
+    35px auto 10px;
+}
+
+
+/* END SCREEN */
+
+#endScreen {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #f8c5d9,
+      #f3b7d0
+    );
+}
+
+#endScreen.active {
+  display: flex;
+}
+
+.end-content h1 {
+  margin:
+    10px 0 18px;
+
+  color: #c9598c;
+
+  font-family: Georgia, serif;
+
+  font-size:
+    clamp(45px, 7vw, 75px);
+
+  text-shadow:
+    4px 4px 0 white;
+}
+
+.end-content p {
+  font-size: 18px;
+
+  letter-spacing: 3px;
+}
