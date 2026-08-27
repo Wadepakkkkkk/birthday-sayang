@@ -1806,3 +1806,220 @@ button::before {
   padding: 7px 11px;
   font-size: 11px;
 }
+/* ==================================
+   SCENE 2 - GAME CHECKPOINT
+================================== */
+
+#scene-2 {
+  position: relative;
+}
+
+.scene2-game-deco {
+  position: absolute;
+  inset: 0;
+
+  z-index: 3;
+
+  pointer-events: none;
+}
+
+/* LEVEL SIGN */
+
+.scene2-level-sign {
+  position: absolute;
+
+  left: 6%;
+  bottom: 20%;
+
+  padding: 7px 11px;
+
+  background: #fff8f8;
+
+  border: 4px solid #c85a8b;
+
+  box-shadow:
+    5px 5px 0 #a84a73;
+
+  color: #a84a73;
+
+  font-size: 11px;
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+  transform: rotate(-2deg);
+}
+
+/* CHECKPOINT SIGN */
+
+.scene2-checkpoint {
+  position: absolute;
+
+  right: 7%;
+  bottom: 19%;
+
+  padding: 8px 12px;
+
+  background: #fff8f8;
+
+  border: 4px solid #d878a3;
+
+  box-shadow:
+    5px 5px 0 #aa5077;
+
+  color: #a85276;
+
+  font-size: 10px;
+  font-weight: bold;
+
+  letter-spacing: 1px;
+
+  transform: rotate(2deg);
+}
+
+/* BUSHES */
+
+.scene2-bush {
+  position: absolute;
+
+  bottom: 9%;
+
+  width: 72px;
+  height: 28px;
+
+  background: #65b95c;
+
+  box-shadow:
+    14px -14px 0 #74c96a,
+    32px -20px 0 #74c96a,
+    50px -11px 0 #65b95c,
+    0 6px 0 #4d9f4b;
+}
+
+.bush-a {
+  left: 2%;
+}
+
+.bush-b {
+  right: 5%;
+
+  transform: scale(.85);
+}
+
+/* FLOWERS */
+
+.scene2-flower {
+  position: absolute;
+
+  bottom: 7%;
+
+  color: #fff7d6;
+
+  font-size: 14px;
+
+  text-shadow:
+    2px 2px 0 #dc79a6;
+
+  animation:
+    flowerBounce 2.5s steps(2) infinite;
+}
+
+.s2-flower-1 {
+  left: 20%;
+}
+
+.s2-flower-2 {
+  left: 32%;
+
+  animation-delay: .5s;
+}
+
+.s2-flower-3 {
+  right: 23%;
+
+  animation-delay: 1s;
+}
+
+/* MUSHROOMS */
+
+.scene2-mushroom {
+  position: absolute;
+
+  width: 24px;
+  height: 13px;
+
+  bottom: 7%;
+
+  background: #dc6f9e;
+
+  border-radius:
+    12px 12px 2px 2px;
+
+  box-shadow:
+    inset 6px 3px 0 #fff2f6,
+    inset -4px 3px 0 #c45b89;
+}
+
+.scene2-mushroom span {
+  position: absolute;
+
+  width: 8px;
+  height: 12px;
+
+  left: 8px;
+  top: 11px;
+
+  background: #fff8e8;
+}
+
+.s2-mushroom-1 {
+  left: 12%;
+}
+
+.s2-mushroom-2 {
+  right: 15%;
+
+  transform: scale(.75);
+}
+
+/* REDUCE WHITE SKY DOTS */
+
+#scene-2::before {
+  opacity: 0.16;
+}
+
+/* IPAD */
+
+@media (max-width: 1100px) {
+
+  .scene2-level-sign {
+    left: 4%;
+  }
+
+  .scene2-checkpoint {
+    right: 5%;
+  }
+
+}
+
+/* PHONE */
+
+@media (max-width: 600px) {
+
+  .scene2-level-sign,
+  .scene2-checkpoint {
+    font-size: 8px;
+
+    padding:
+      5px 7px;
+  }
+
+  .scene2-bush {
+    transform: scale(.7);
+  }
+
+  .bush-b {
+    transform: scale(.6);
+  }
+
+}
