@@ -1,221 +1,411 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
-  const startScreen =
-    document.getElementById("start-screen");
+const bgMusic = document.getElementById("bgMusic");
 
-  const scene2 =
-    document.getElementById("scene-2");
+const introText = document.getElementById("introText");
+const introNext = document.getElementById("introNext");
 
-  const scene3 =
-    document.getElementById("scene-3");
+const questionText = document.getElementById("questionText");
+const answerGrid = document.getElementById("answerGrid");
+const questNumber = document.getElementById("questNumber");
 
-  const scene4 =
-    document.getElementById("scene-4");
+const correctImage = document.getElementById("correctImage");
 
-  const scene5 =
-    document.getElementById("scene-5");
-
-  const scene6 =
-    document.getElementById("scene-6");
+let currentQuest = 1;
 
 
-  const startBtn =
-    document.getElementById("start-btn");
+/* =========================================================
+   INTRO TYPEWRITER
+========================================================= */
 
-  const continueBtn =
-    document.getElementById("continue-btn");
+const introMessage =
+  "Hi Dee ♡\n\n" +
+  "I made a little game just for you.\n\n" +
+  "Complete all the levels to unlock your surprise...";
 
-  const nextBtn =
-    document.getElementById("next-btn");
-
-  const yesBtn =
-    document.getElementById("yes-btn");
-
-  const noBtn =
-    document.getElementById("no-btn");
-
-  const finalBtn =
-    document.getElementById("final-btn");
-
-  const music =
-    document.getElementById("bg-music");
+let introIndex = 0;
 
 
-  /* =========================
-     CHANGE SCENE
-  ========================== */
+function typeIntro() {
 
-  function showScene(scene) {
+  if (introIndex < introMessage.length) {
 
-    document
-      .querySelectorAll(".screen")
-      .forEach(function (screen) {
+    const character = introMessage.charAt(introIndex);
 
-        screen.classList.add("hidden");
+    if (character === "\n") {
+      introText.innerHTML += "<br>";
+    } else {
+      introText.innerHTML += character;
+    }
 
-      });
+    introIndex++;
 
+    setTimeout(typeIntro, 38);
 
-    scene.classList.remove("hidden");
+  } else {
+
+    introNext.classList.remove("hidden");
 
   }
 
+}
 
-  /* =========================
-     START
-  ========================== */
 
-  startBtn.addEventListener("click", function () {
+window.addEventListener("load", () => {
 
-    if (music) {
+  setTimeout(typeIntro, 500);
 
-      music.volume = 0.5;
+});
 
-      music.play().catch(function () {
-        console.log("Music waiting for user interaction.");
+
+/* =========================================================
+   START MUSIC AFTER USER INTERACTION
+========================================================= */
+
+function startMusic() {
+
+  if (!bgMusic) return;
+
+  bgMusic.volume = 0.45;
+
+  const playPromise = bgMusic.play();
+
+  if (playPromise !== undefined) {
+
+    playPromise.catch(() => {
+      console.log("Music waiting for user interaction.");
+    });
+
+  }
+
+}
+
+
+/* =========================================================
+   SCENE SYSTEM
+========================================================= */
+
+function showScene(sceneId) {
+
+  document.querySelectorAll(".scene").forEach(scene => {
+    scene.classList.remove("active");
+  });
+
+  const target = document.getElementById(sceneId);
+
+  if (!target) {
+    console.error("Scene not found:", sceneId);
+    return;
+  }
+
+  target.classList.add("active");
+
+  /*
+    Stop memory videos when leaving memory page.
+  */
+
+  if (sceneId !== "sceneMemories") {
+
+    document
+      .querySelectorAll("#sceneMemories video")
+      .forEach(video => {
+
+        video.pause();
+
       });
 
-    }
+  }
 
-    showScene(scene2);
-
-  });
+}
 
 
-  /* =========================
-     SCENE 2
-  ========================== */
+/* =========================================================
+   INTRO
+========================================================= */
 
-  continueBtn.addEventListener("click", function () {
+function finishIntro() {
 
-    showScene(scene3);
+  startMusic();
 
-  });
+  showScene("sceneReady");
 
-
-  /* =========================
-     SCENE 3 MEMORY QUIZ
-  ========================== */
-
-  const quizOptions =
-    document.querySelectorAll(".quiz-option");
-
-  const quizResult =
-    document.getElementById("quiz-result");
+}
 
 
-  quizOptions.forEach(function (option) {
+/* =========================================================
+   QUEST DATA
+========================================================= */
 
-    option.addEventListener("click", function () {
+const quests = {
 
+  1: {
 
-      /* CORRECT ANSWER */
+    question:
+      "What was Dee's first impression of Hanif?",
 
-      if (
-        option.classList.contains("correct-answer")
-      ) {
-
-        quizResult.textContent =
-          "CORRECT! ♡ MEMORY UNLOCKED";
-
-        option.classList.add(
-          "answer-correct"
-        );
-
-
-        quizOptions.forEach(function (button) {
-
-          button.disabled = true;
-
-        });
-
-
-        nextBtn.classList.remove("hidden");
-
+    answers: [
+      {
+        text: "SOMBONG",
+        correct: false
+      },
+      {
+        text: "HANDSOME ♡",
+        correct: true
+      },
+      {
+        text: "ANNOYING",
+        correct: false
       }
+    ],
+
+    image: "correct1.JPG"
+
+  },
 
 
-      /* WRONG ANSWER */
+  2: {
 
-      else {
+    question:
+      "When did we first meet?",
 
-        quizResult.textContent =
-          "WRONG MEMORY! TRY AGAIN ♡";
-
-
-        option.classList.add(
-          "answer-wrong"
-        );
-
-
-        setTimeout(function () {
-
-          option.classList.remove(
-            "answer-wrong"
-          );
-
-        }, 350);
-
+    answers: [
+      {
+        text: "12/4/2025",
+        correct: false
+      },
+      {
+        text: "19/7/2025",
+        correct: true
+      },
+      {
+        text: "3/11/2025",
+        correct: false
       }
+    ],
+
+    image: "correct2.JPG"
+
+  },
+
+
+  3: {
+
+    question:
+      "What is Dee's favourite?",
+
+    answers: [
+      {
+        text: "DUBAI CHEWY COOKIES",
+        correct: false
+      },
+      {
+        text: "SOFT COOKIES",
+        correct: false
+      },
+      {
+        text: "HANIF ♡",
+        correct: true
+      }
+    ],
+
+    image: "correct3.JPG"
+
+  }
+
+};
+
+
+/* =========================================================
+   START / LOAD QUEST
+========================================================= */
+
+function startQuest(number) {
+
+  currentQuest = number;
+
+  loadQuest();
+
+  showScene("sceneQuest");
+
+}
+
+
+function loadQuest() {
+
+  const quest = quests[currentQuest];
+
+  if (!quest) {
+    return;
+  }
+
+
+  questNumber.textContent =
+    `MEMORY QUEST 0${currentQuest}`;
+
+
+  questionText.textContent =
+    quest.question;
+
+
+  answerGrid.innerHTML = "";
+
+
+  quest.answers.forEach(answer => {
+
+    const button =
+      document.createElement("button");
+
+    button.className = "pixel-btn";
+
+    button.textContent = answer.text;
+
+
+    button.addEventListener("click", () => {
+
+      checkAnswer(answer.correct);
 
     });
 
-  });
 
-
-  /* NEXT AFTER CORRECT ANSWER */
-
-  nextBtn.addEventListener("click", function () {
-
-    showScene(scene4);
+    answerGrid.appendChild(button);
 
   });
 
-
-  /* =========================
-     SCENE 4
-  ========================== */
-
-  yesBtn.addEventListener("click", function () {
-
-    showScene(scene5);
-
-  });
+}
 
 
-  /* NO BUTTON RUNS AWAY */
+/* =========================================================
+   CHECK ANSWER
+========================================================= */
 
-  noBtn.addEventListener("click", function () {
+function checkAnswer(isCorrect) {
 
-    noBtn.textContent =
-      "ARE YOU SURE? 😭";
+  if (isCorrect) {
 
-  });
+    correctImage.src =
+      quests[currentQuest].image;
 
+    showScene("sceneCorrect");
 
-  noBtn.addEventListener("mouseenter", function () {
+  } else {
 
-    const x =
-      Math.floor(Math.random() * 80) - 40;
+    showScene("sceneWrong");
 
-    const y =
-      Math.floor(Math.random() * 40) - 20;
+  }
 
-
-    noBtn.style.transform =
-      "translate(" + x + "px," + y + "px)";
-
-  });
+}
 
 
-  /* =========================
-     SCENE 5
-  ========================== */
+/* =========================================================
+   WRONG → RETRY SAME QUEST
+========================================================= */
 
-  finalBtn.addEventListener("click", function () {
+function retryQuest() {
 
-    showScene(scene6);
+  loadQuest();
 
-  });
+  showScene("sceneQuest");
 
-});
+}
+
+
+/* =========================================================
+   CORRECT → NEXT QUEST
+========================================================= */
+
+function nextQuest() {
+
+  if (currentQuest < 3) {
+
+    currentQuest++;
+
+    loadQuest();
+
+    showScene("sceneQuest");
+
+  } else {
+
+    showScene("sceneQuestComplete");
+
+  }
+
+}
+
+
+/* =========================================================
+   UNIVERSE YES
+========================================================= */
+
+function sayYes() {
+
+  showScene("sceneBirthday");
+
+}
+
+
+/* =========================================================
+   NO BUTTON
+========================================================= */
+
+let noClicks = 0;
+
+
+function moveNoButton() {
+
+  const button =
+    document.getElementById("noButton");
+
+  noClicks++;
+
+
+  const messages = [
+    "NO",
+    "REALLY?",
+    "SURE? 😭",
+    "DEE...",
+    "TRY AGAIN ♡"
+  ];
+
+
+  button.textContent =
+    messages[
+      Math.min(
+        noClicks,
+        messages.length - 1
+      )
+    ];
+
+
+  /*
+    Move button slightly so NO becomes
+    annoying to click, like a mini game.
+  */
+
+  const x =
+    Math.floor(Math.random() * 100) - 50;
+
+  const y =
+    Math.floor(Math.random() * 60) - 30;
+
+
+  button.style.transform =
+    `translate(${x}px, ${y}px)`;
+
+
+  /*
+    Eventually give up and turn it into YES.
+  */
+
+  if (noClicks >= 5) {
+
+    button.textContent = "YES ♡";
+
+    button.onclick = sayYes;
+
+    button.style.transform = "none";
+
+  }
+
+}
