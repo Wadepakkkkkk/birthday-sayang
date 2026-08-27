@@ -3,11 +3,11 @@
 ========================================================= */
 
 const bgMusic = document.getElementById("bgMusic");
-
 const correctImage = document.getElementById("correctImage");
 
 let currentQuest = 1;
-
+let noClicks = 0;
+let finalLetterPlayed = false;
 
 
 /* =========================================================
@@ -16,82 +16,45 @@ let currentQuest = 1;
 
 function showScene(sceneId) {
 
-  document
-    .querySelectorAll(".scene")
-    .forEach(function(scene) {
+  document.querySelectorAll(".scene").forEach(function(scene) {
+    scene.classList.remove("active");
+  });
 
-      scene.classList.remove("active");
-
-    });
-
-
-  const target =
-    document.getElementById(sceneId);
-
+  const target = document.getElementById(sceneId);
 
   if (!target) {
-
-    console.error(
-      "Scene not found:",
-      sceneId
-    );
-
+    console.error("Scene not found:", sceneId);
     return;
-
   }
-
 
   target.classList.add("active");
 
 
-  /* =================================
-     MEMORY VIDEOS
-  ================================= */
+  /* MEMORY VIDEO AUTOPLAY */
 
   const memoryVideos =
-    document.querySelectorAll(
-      "#memoryScene video"
-    );
-
+    document.querySelectorAll("#memoryScene video");
 
   if (sceneId === "memoryScene") {
 
     memoryVideos.forEach(function(video) {
 
       video.muted = true;
-
       video.loop = true;
-
       video.playsInline = true;
 
-
-      const playPromise =
-        video.play();
-
+      const playPromise = video.play();
 
       if (playPromise !== undefined) {
-
-        playPromise.catch(function(error) {
-
-          console.log(
-            "Autoplay waiting:",
-            error
-          );
-
-        });
-
+        playPromise.catch(function() {});
       }
 
     });
 
-  }
-
-  else {
+  } else {
 
     memoryVideos.forEach(function(video) {
-
       video.pause();
-
     });
 
   }
@@ -99,44 +62,27 @@ function showScene(sceneId) {
 }
 
 
-
 /* =========================================================
-   BACKGROUND MUSIC
+   MUSIC
 ========================================================= */
 
 function startMusic() {
 
-  if (!bgMusic) {
-    return;
-  }
-
+  if (!bgMusic) return;
 
   bgMusic.volume = 0.45;
 
-
-  const playPromise =
-    bgMusic.play();
-
+  const playPromise = bgMusic.play();
 
   if (playPromise !== undefined) {
-
-    playPromise.catch(function(error) {
-
-      console.log(
-        "Music waiting for interaction:",
-        error
-      );
-
-    });
-
+    playPromise.catch(function() {});
   }
 
 }
 
 
-
 /* =========================================================
-   INTRO -> READY
+   INTRO
 ========================================================= */
 
 function startGame() {
@@ -148,9 +94,8 @@ function startGame() {
 }
 
 
-
 /* =========================================================
-   READY -> WELCOME
+   READY
 ========================================================= */
 
 function showWelcome() {
@@ -160,9 +105,8 @@ function showWelcome() {
 }
 
 
-
 /* =========================================================
-   WELCOME -> QUEST 1
+   START QUEST
 ========================================================= */
 
 function startQuest() {
@@ -172,7 +116,6 @@ function startQuest() {
   showScene("quest1");
 
 }
-
 
 
 /* =========================================================
@@ -188,269 +131,33 @@ function wrongAnswer(questNumber) {
 }
 
 
-
 /* =========================================================
    TRY AGAIN
 ========================================================= */
 
 function tryAgain() {
 
-  showScene(
-    "quest" + currentQuest
-  );
+  showScene("quest" + currentQuest);
 
 }
 
 
-
 /* =========================================================
-   CORRECT ANSWER
-========================================================= */
-
-function correctAnswer(questNumber) {
-
-  currentQuest = questNumber;
-
-
-  const images = {
-
-    1: "correct1.JPG",
-
-    2: "correct2.JPG",
-
-    3: "correct3.JPG"
-
-  };
-
-
-  if (correctImage) {
-
-    correctImage.src =
-      images[questNumber];
-
-  }
-
-
-  showScene("correctScene");
-
-}
-
-
-
-/* =========================================================
-   NEXT QUEST
-========================================================= */
-
-function nextQuest() {
-
-  if (currentQuest === 1) {
-
-    currentQuest = 2;
-
-    showScene("quest2");
-
-  }
-
-  else if (currentQuest === 2) {
-
-    currentQuest = 3;
-
-    showScene("quest3");
-
-  }
-
-  else {
-
-    /*
-      Quest 3 complete.
-      Go straight to six memories.
-    */
-
-    showScene("memoryScene");
-
-  }
-
-}
-
-
-
-/* =========================================================
-   MEMORY GALLERY -> JUST US
-========================================================= */
-
-function showUniverse() {
-
-  showScene("universeScene");
-
-}
-
-
-
-/* =========================================================
-   YES BUTTON
-========================================================= */
-
-function yesUniverse() {
-
-  showScene("birthdayScene");
-
-}
-
-
-
-/* =========================================================
-   NO BUTTON
-========================================================= */
-
-let noClicks = 0;
-
-
-function moveNoButton() {
-
-  const button =
-    document.getElementById(
-      "noButton"
-    );
-
-
-  if (!button) {
-    return;
-  }
-
-
-  noClicks++;
-
-
-  const messages = [
-
-    "NO",
-
-    "REALLY?",
-
-    "SURE? 😭",
-
-    "DEE...",
-
-    "TRY AGAIN ♡"
-
-  ];
-
-
-  button.textContent =
-    messages[
-      Math.min(
-        noClicks,
-        messages.length - 1
-      )
-    ];
-
-
-  const x =
-    Math.floor(
-      Math.random() * 130
-    ) - 65;
-
-
-  const y =
-    Math.floor(
-      Math.random() * 80
-    ) - 40;
-
-
-  button.style.transform =
-    "translate(" +
-    x +
-    "px, " +
-    y +
-    "px)";
-
-
-  /*
-    Lepas beberapa kali,
-    NO surrender jadi YES 😂
-  */
-
-  if (noClicks >= 5) {
-
-    button.textContent =
-      "YES ♡";
-
-
-    button.style.transform =
-      "none";
-
-
-    button.onclick =
-      yesUniverse;
-
-  }
-
-}
-
-
-
-/* =========================================================
-   BIRTHDAY -> LETTER
-========================================================= */
-
-function showLetter() {
-
-  showScene("letterScene");
-
-}
-
-
-
-/* =========================================================
-   CONNECT NO BUTTON
-========================================================= */
-
-document.addEventListener(
-  "DOMContentLoaded",
-  function() {
-
-    const noButton =
-      document.getElementById(
-        "noButton"
-      );
-
-
-    if (noButton) {
-
-      noButton.addEventListener(
-        "click",
-        moveNoButton
-      );
-
-      noButton.addEventListener(
-        "mouseenter",
-        moveNoButton
-      );
-
-    }
-
-  }
-);
-/* =========================================
    HEART BURST
-========================================= */
+========================================================= */
 
 function createHeartBurst() {
 
-  const burst =
-    document.createElement("div");
+  const burst = document.createElement("div");
 
-  burst.className =
-    "heart-burst";
+  burst.className = "heart-burst";
 
 
   for (let i = 0; i < 18; i++) {
 
-    const heart =
-      document.createElement("span");
+    const heart = document.createElement("span");
 
-    heart.className =
-      "heart-particle";
+    heart.className = "heart-particle";
 
     heart.textContent =
       i % 3 === 0 ? "✦" : "♡";
@@ -461,7 +168,6 @@ function createHeartBurst() {
 
     const distance =
       80 + Math.random() * 160;
-
 
     const x =
       Math.cos(angle) * distance;
@@ -490,64 +196,185 @@ function createHeartBurst() {
 
 
   setTimeout(function() {
-
     burst.remove();
-
   }, 1300);
 
 }
 
 
-/* =========================================
-   ADD BURST TO CORRECT ANSWER
-========================================= */
+/* =========================================================
+   CORRECT ANSWER
+========================================================= */
 
-const originalCorrectAnswer =
-  correctAnswer;
+function correctAnswer(questNumber) {
+
+  currentQuest = questNumber;
 
 
-correctAnswer =
-  function(questNumber) {
-
-    createHeartBurst();
-
-    originalCorrectAnswer(
-      questNumber
-    );
-
+  const images = {
+    1: "correct1.JPG",
+    2: "correct2.JPG",
+    3: "correct3.JPG"
   };
 
 
-/* =========================================
-   ADD BURST TO YES
-========================================= */
-
-const originalYesUniverse =
-  yesUniverse;
-
-
-yesUniverse =
-  function() {
-
-    createHeartBurst();
-
-    originalYesUniverse();
-
-  };
-
-
-/* =========================================
-   FINAL LETTER TYPEWRITER - PROPER
-========================================= */
-
-let finalLetterPlayed = false;
-
-
-function typeFinalLetterProper() {
-
-  if (finalLetterPlayed) {
-    return;
+  if (correctImage) {
+    correctImage.src = images[questNumber];
   }
+
+
+  createHeartBurst();
+
+  showScene("correctScene");
+
+}
+
+
+/* =========================================================
+   NEXT QUEST
+========================================================= */
+
+function nextQuest() {
+
+  if (currentQuest === 1) {
+
+    currentQuest = 2;
+
+    showScene("quest2");
+
+  }
+
+  else if (currentQuest === 2) {
+
+    currentQuest = 3;
+
+    showScene("quest3");
+
+  }
+
+  else {
+
+    showScene("memoryScene");
+
+  }
+
+}
+
+
+/* =========================================================
+   MEMORY -> UNIVERSE
+========================================================= */
+
+function showUniverse() {
+
+  showScene("universeScene");
+
+}
+
+
+/* =========================================================
+   YES
+========================================================= */
+
+function yesUniverse() {
+
+  createHeartBurst();
+
+  setTimeout(function() {
+    showScene("birthdayScene");
+  }, 350);
+
+}
+
+
+/* =========================================================
+   NO BUTTON
+========================================================= */
+
+function moveNoButton() {
+
+  const button =
+    document.getElementById("noButton");
+
+  if (!button) return;
+
+
+  noClicks++;
+
+
+  const messages = [
+    "NO",
+    "REALLY?",
+    "SURE? 😭",
+    "DEE...",
+    "TRY AGAIN ♡"
+  ];
+
+
+  button.textContent =
+    messages[
+      Math.min(
+        noClicks,
+        messages.length - 1
+      )
+    ];
+
+
+  const x =
+    Math.floor(Math.random() * 130) - 65;
+
+  const y =
+    Math.floor(Math.random() * 80) - 40;
+
+
+  button.style.transform =
+    "translate(" +
+    x +
+    "px, " +
+    y +
+    "px)";
+
+
+  if (noClicks >= 5) {
+
+    button.textContent = "YES ♡";
+
+    button.style.transform = "none";
+
+    button.onclick = yesUniverse;
+
+  }
+
+}
+
+
+/* =========================================================
+   FINAL LETTER
+========================================================= */
+
+function showLetter() {
+
+  showScene("letterScene");
+
+
+  if (!finalLetterPlayed) {
+
+    setTimeout(function() {
+      typeFinalLetter();
+    }, 400);
+
+  }
+
+}
+
+
+/* =========================================================
+   FINAL LETTER TYPEWRITER
+========================================================= */
+
+function typeFinalLetter() {
+
+  if (finalLetterPlayed) return;
 
   finalLetterPlayed = true;
 
@@ -558,6 +385,26 @@ function typeFinalLetterProper() {
         ".letter-body > p"
       )
     );
+
+
+  /* Save text before clearing */
+
+  const paragraphTexts =
+    paragraphs.map(function(paragraph) {
+      return paragraph.innerText;
+    });
+
+
+  paragraphs.forEach(function(paragraph) {
+
+    paragraph.textContent = "";
+
+    paragraph.classList.remove(
+      "reveal-text",
+      "typing-now"
+    );
+
+  });
 
 
   let paragraphIndex = 0;
@@ -580,12 +427,9 @@ function typeFinalLetterProper() {
     const paragraph =
       paragraphs[paragraphIndex];
 
+    const text =
+      paragraphTexts[paragraphIndex];
 
-    const originalText =
-      paragraph.innerText;
-
-
-    paragraph.textContent = "";
 
     paragraph.classList.add(
       "reveal-text",
@@ -598,23 +442,13 @@ function typeFinalLetterProper() {
 
     function typeCharacter() {
 
-      if (
-        charIndex <
-        originalText.length
-      ) {
+      if (charIndex < text.length) {
 
         paragraph.textContent +=
-          originalText.charAt(
-            charIndex
-          );
-
+          text.charAt(charIndex);
 
         charIndex++;
 
-
-        /*
-          Auto scroll as text grows
-        */
 
         const letter =
           document.querySelector(
@@ -632,7 +466,7 @@ function typeFinalLetterProper() {
 
         setTimeout(
           typeCharacter,
-          22
+          20
         );
 
       }
@@ -649,7 +483,7 @@ function typeFinalLetterProper() {
 
         setTimeout(
           typeNextParagraph,
-          350
+          300
         );
 
       }
@@ -667,9 +501,9 @@ function typeFinalLetterProper() {
 }
 
 
-/* =========================================
+/* =========================================================
    END BUTTON
-========================================= */
+========================================================= */
 
 function addEndButton() {
 
@@ -679,9 +513,7 @@ function addEndButton() {
     );
 
 
-  if (!letter) {
-    return;
-  }
+  if (!letter) return;
 
 
   if (
@@ -694,9 +526,7 @@ function addEndButton() {
 
 
   const button =
-    document.createElement(
-      "button"
-    );
+    document.createElement("button");
 
 
   button.id =
@@ -711,20 +541,22 @@ function addEndButton() {
     "THE END ♡";
 
 
+  button.style.marginTop =
+    "30px";
+
+
   button.onclick =
     showEndScreen;
 
 
-  letter.appendChild(
-    button
-  );
+  letter.appendChild(button);
 
 }
 
 
-/* =========================================
+/* =========================================================
    END SCREEN
-========================================= */
+========================================================= */
 
 function showEndScreen() {
 
@@ -740,9 +572,7 @@ function showEndScreen() {
   if (!screen) {
 
     screen =
-      document.createElement(
-        "div"
-      );
+      document.createElement("div");
 
 
     screen.id =
@@ -768,175 +598,43 @@ function showEndScreen() {
     `;
 
 
-    document.body.appendChild(
-      screen
-    );
+    document.body.appendChild(screen);
 
   }
 
 
-  screen.classList.add(
-    "active"
-  );
+  screen.classList.add("active");
 
 }
 
 
-/* =========================================
-   HEART BURST
-========================================= */
+/* =========================================================
+   SETUP
+========================================================= */
 
-function createHeartBurst() {
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
 
-  const burst =
-    document.createElement(
-      "div"
-    );
-
-
-  burst.className =
-    "heart-burst";
-
-
-  for (
-    let i = 0;
-    i < 18;
-    i++
-  ) {
-
-    const heart =
-      document.createElement(
-        "span"
+    const noButton =
+      document.getElementById(
+        "noButton"
       );
 
 
-    heart.className =
-      "heart-particle";
+    if (noButton) {
 
+      noButton.addEventListener(
+        "click",
+        moveNoButton
+      );
 
-    heart.textContent =
-      i % 3 === 0
-        ? "✦"
-        : "♡";
+      noButton.addEventListener(
+        "mouseenter",
+        moveNoButton
+      );
 
-
-    const angle =
-      Math.random() *
-      Math.PI *
-      2;
-
-
-    const distance =
-      80 +
-      Math.random() *
-      160;
-
-
-    const x =
-      Math.cos(angle) *
-      distance;
-
-
-    const y =
-      Math.sin(angle) *
-      distance;
-
-
-    heart.style.setProperty(
-      "--x",
-      x + "px"
-    );
-
-
-    heart.style.setProperty(
-      "--y",
-      y + "px"
-    );
-
-
-    burst.appendChild(
-      heart
-    );
+    }
 
   }
-
-
-  document.body.appendChild(
-    burst
-  );
-
-
-  setTimeout(
-    function() {
-
-      burst.remove();
-
-    },
-    1300
-  );
-
-}
-
-
-/* =========================================
-   HOOK CORRECT ANSWER
-========================================= */
-
-const originalCorrectAnswer =
-  correctAnswer;
-
-
-correctAnswer =
-  function(questNumber) {
-
-    createHeartBurst();
-
-    originalCorrectAnswer(
-      questNumber
-    );
-
-  };
-
-
-/* =========================================
-   HOOK YES
-========================================= */
-
-const originalYesUniverse =
-  yesUniverse;
-
-
-yesUniverse =
-  function() {
-
-    createHeartBurst();
-
-    originalYesUniverse();
-
-  };
-
-
-/* =========================================
-   HOOK LETTER
-========================================= */
-
-const originalShowLetter =
-  showLetter;
-
-
-showLetter =
-  function() {
-
-    originalShowLetter();
-
-
-    setTimeout(
-      function() {
-
-        typeFinalLetterProper();
-
-      },
-      500
-    );
-
-  };
+);
