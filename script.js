@@ -1,29 +1,35 @@
-/* =========================================================
-   ELEMENTS
-========================================================= */
+const bgMusic =
+  document.getElementById("bgMusic");
 
-const bgMusic = document.getElementById("bgMusic");
+const introText =
+  document.getElementById("introText");
 
-const introText = document.getElementById("introText");
-const introNext = document.getElementById("introNext");
+const introNext =
+  document.getElementById("introNext");
 
-const questionText = document.getElementById("questionText");
-const answerGrid = document.getElementById("answerGrid");
-const questNumber = document.getElementById("questNumber");
+const questionText =
+  document.getElementById("questionText");
 
-const correctImage = document.getElementById("correctImage");
+const answerGrid =
+  document.getElementById("answerGrid");
+
+const questNumber =
+  document.getElementById("questNumber");
+
+const correctImage =
+  document.getElementById("correctImage");
+
 
 let currentQuest = 1;
 
 
-/* =========================================================
-   INTRO TYPEWRITER
-========================================================= */
+/* INTRO */
 
 const introMessage =
   "Hi Dee ♡\n\n" +
   "I made a little game just for you.\n\n" +
   "Complete all the levels to unlock your surprise...";
+
 
 let introIndex = 0;
 
@@ -32,15 +38,23 @@ function typeIntro() {
 
   if (introIndex < introMessage.length) {
 
-    const character = introMessage.charAt(introIndex);
+    const character =
+      introMessage.charAt(introIndex);
+
 
     if (character === "\n") {
+
       introText.innerHTML += "<br>";
+
     } else {
+
       introText.innerHTML += character;
+
     }
 
+
     introIndex++;
+
 
     setTimeout(typeIntro, 38);
 
@@ -60,22 +74,28 @@ window.addEventListener("load", () => {
 });
 
 
-/* =========================================================
-   START MUSIC AFTER USER INTERACTION
-========================================================= */
+/* MUSIC */
 
 function startMusic() {
 
   if (!bgMusic) return;
 
+
   bgMusic.volume = 0.45;
 
-  const playPromise = bgMusic.play();
+
+  const playPromise =
+    bgMusic.play();
+
 
   if (playPromise !== undefined) {
 
     playPromise.catch(() => {
-      console.log("Music waiting for user interaction.");
+
+      console.log(
+        "Music waiting for user interaction."
+      );
+
     });
 
   }
@@ -83,47 +103,81 @@ function startMusic() {
 }
 
 
-/* =========================================================
-   SCENE SYSTEM
-========================================================= */
+/* SCENES */
 
 function showScene(sceneId) {
 
-  document.querySelectorAll(".scene").forEach(scene => {
-    scene.classList.remove("active");
-  });
+  document
+    .querySelectorAll(".scene")
+    .forEach(scene => {
 
-  const target = document.getElementById(sceneId);
+      scene.classList.remove("active");
+
+    });
+
+
+  const target =
+    document.getElementById(sceneId);
+
 
   if (!target) {
-    console.error("Scene not found:", sceneId);
+
+    console.error(
+      "Scene not found:",
+      sceneId
+    );
+
     return;
+
   }
+
 
   target.classList.add("active");
 
-  /*
-    Stop memory videos when leaving memory page.
-  */
 
-  if (sceneId !== "sceneMemories") {
+  /* MEMORY VIDEO AUTOPLAY */
 
-    document
-      .querySelectorAll("#sceneMemories video")
-      .forEach(video => {
+  const memoryVideos =
+    document.querySelectorAll(
+      "#sceneMemories video"
+    );
 
-        video.pause();
 
-      });
+  if (sceneId === "sceneMemories") {
+
+    memoryVideos.forEach(video => {
+
+      video.muted = true;
+
+      video.currentTime = 0;
+
+
+      const playPromise =
+        video.play();
+
+
+      if (playPromise !== undefined) {
+
+        playPromise.catch(() => {});
+
+      }
+
+    });
+
+  } else {
+
+    memoryVideos.forEach(video => {
+
+      video.pause();
+
+    });
 
   }
 
 }
 
 
-/* =========================================================
-   INTRO
-========================================================= */
+/* INTRO CONTINUE */
 
 function finishIntro() {
 
@@ -134,9 +188,7 @@ function finishIntro() {
 }
 
 
-/* =========================================================
-   QUEST DATA
-========================================================= */
+/* QUESTS */
 
 const quests = {
 
@@ -146,18 +198,22 @@ const quests = {
       "What was Dee's first impression of Hanif?",
 
     answers: [
+
       {
         text: "SOMBONG",
         correct: false
       },
+
       {
         text: "HANDSOME ♡",
         correct: true
       },
+
       {
         text: "ANNOYING",
         correct: false
       }
+
     ],
 
     image: "correct1.JPG"
@@ -171,18 +227,22 @@ const quests = {
       "When did we first meet?",
 
     answers: [
+
       {
         text: "12/4/2025",
         correct: false
       },
+
       {
         text: "19/7/2025",
         correct: true
       },
+
       {
         text: "3/11/2025",
         correct: false
       }
+
     ],
 
     image: "correct2.JPG"
@@ -196,18 +256,22 @@ const quests = {
       "What is Dee's favourite?",
 
     answers: [
+
       {
         text: "DUBAI CHEWY COOKIES",
         correct: false
       },
+
       {
         text: "SOFT COOKIES",
         correct: false
       },
+
       {
         text: "HANIF ♡",
         correct: true
       }
+
     ],
 
     image: "correct3.JPG"
@@ -217,9 +281,7 @@ const quests = {
 };
 
 
-/* =========================================================
-   START / LOAD QUEST
-========================================================= */
+/* START QUEST */
 
 function startQuest(number) {
 
@@ -232,9 +294,13 @@ function startQuest(number) {
 }
 
 
+/* LOAD QUEST */
+
 function loadQuest() {
 
-  const quest = quests[currentQuest];
+  const quest =
+    quests[currentQuest];
+
 
   if (!quest) {
     return;
@@ -257,16 +323,25 @@ function loadQuest() {
     const button =
       document.createElement("button");
 
-    button.className = "pixel-btn";
 
-    button.textContent = answer.text;
+    button.className =
+      "pixel-btn";
 
 
-    button.addEventListener("click", () => {
+    button.textContent =
+      answer.text;
 
-      checkAnswer(answer.correct);
 
-    });
+    button.addEventListener(
+      "click",
+      () => {
+
+        checkAnswer(
+          answer.correct
+        );
+
+      }
+    );
 
 
     answerGrid.appendChild(button);
@@ -276,9 +351,7 @@ function loadQuest() {
 }
 
 
-/* =========================================================
-   CHECK ANSWER
-========================================================= */
+/* CHECK ANSWER */
 
 function checkAnswer(isCorrect) {
 
@@ -286,6 +359,7 @@ function checkAnswer(isCorrect) {
 
     correctImage.src =
       quests[currentQuest].image;
+
 
     showScene("sceneCorrect");
 
@@ -298,9 +372,7 @@ function checkAnswer(isCorrect) {
 }
 
 
-/* =========================================================
-   WRONG → RETRY SAME QUEST
-========================================================= */
+/* RETRY */
 
 function retryQuest() {
 
@@ -311,9 +383,7 @@ function retryQuest() {
 }
 
 
-/* =========================================================
-   CORRECT → NEXT QUEST
-========================================================= */
+/* NEXT QUEST */
 
 function nextQuest() {
 
@@ -327,16 +397,16 @@ function nextQuest() {
 
   } else {
 
-    showScene("sceneQuestComplete");
+    showScene(
+      "sceneQuestComplete"
+    );
 
   }
 
 }
 
 
-/* =========================================================
-   UNIVERSE YES
-========================================================= */
+/* YES */
 
 function sayYes() {
 
@@ -345,9 +415,7 @@ function sayYes() {
 }
 
 
-/* =========================================================
-   NO BUTTON
-========================================================= */
+/* NO BUTTON */
 
 let noClicks = 0;
 
@@ -355,17 +423,26 @@ let noClicks = 0;
 function moveNoButton() {
 
   const button =
-    document.getElementById("noButton");
+    document.getElementById(
+      "noButton"
+    );
+
 
   noClicks++;
 
 
   const messages = [
+
     "NO",
+
     "REALLY?",
+
     "SURE? 😭",
+
     "DEE...",
+
     "TRY AGAIN ♡"
+
   ];
 
 
@@ -378,33 +455,34 @@ function moveNoButton() {
     ];
 
 
-  /*
-    Move button slightly so NO becomes
-    annoying to click, like a mini game.
-  */
-
   const x =
-    Math.floor(Math.random() * 100) - 50;
+    Math.floor(
+      Math.random() * 100
+    ) - 50;
+
 
   const y =
-    Math.floor(Math.random() * 60) - 30;
+    Math.floor(
+      Math.random() * 60
+    ) - 30;
 
 
   button.style.transform =
     `translate(${x}px, ${y}px)`;
 
 
-  /*
-    Eventually give up and turn it into YES.
-  */
-
   if (noClicks >= 5) {
 
-    button.textContent = "YES ♡";
+    button.textContent =
+      "YES ♡";
 
-    button.onclick = sayYes;
 
-    button.style.transform = "none";
+    button.onclick =
+      sayYes;
+
+
+    button.style.transform =
+      "none";
 
   }
 
