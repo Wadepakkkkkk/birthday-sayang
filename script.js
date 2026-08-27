@@ -431,3 +431,336 @@ document.addEventListener(
 
   }
 );
+/* =========================================
+   HEART BURST
+========================================= */
+
+function createHeartBurst() {
+
+  const burst =
+    document.createElement("div");
+
+  burst.className =
+    "heart-burst";
+
+
+  for (let i = 0; i < 18; i++) {
+
+    const heart =
+      document.createElement("span");
+
+    heart.className =
+      "heart-particle";
+
+    heart.textContent =
+      i % 3 === 0 ? "✦" : "♡";
+
+
+    const angle =
+      Math.random() * Math.PI * 2;
+
+    const distance =
+      80 + Math.random() * 160;
+
+
+    const x =
+      Math.cos(angle) * distance;
+
+    const y =
+      Math.sin(angle) * distance;
+
+
+    heart.style.setProperty(
+      "--x",
+      x + "px"
+    );
+
+    heart.style.setProperty(
+      "--y",
+      y + "px"
+    );
+
+
+    burst.appendChild(heart);
+
+  }
+
+
+  document.body.appendChild(burst);
+
+
+  setTimeout(function() {
+
+    burst.remove();
+
+  }, 1300);
+
+}
+
+
+/* =========================================
+   ADD BURST TO CORRECT ANSWER
+========================================= */
+
+const originalCorrectAnswer =
+  correctAnswer;
+
+
+correctAnswer =
+  function(questNumber) {
+
+    createHeartBurst();
+
+    originalCorrectAnswer(
+      questNumber
+    );
+
+  };
+
+
+/* =========================================
+   ADD BURST TO YES
+========================================= */
+
+const originalYesUniverse =
+  yesUniverse;
+
+
+yesUniverse =
+  function() {
+
+    createHeartBurst();
+
+    originalYesUniverse();
+
+  };
+
+
+/* =========================================
+   FINAL LETTER TYPEWRITER
+========================================= */
+
+function typeFinalLetter() {
+
+  const letter =
+    document.querySelector(
+      ".letter-body"
+    );
+
+
+  if (!letter) {
+    return;
+  }
+
+
+  const originalHTML =
+    letter.innerHTML;
+
+
+  const temp =
+    document.createElement("div");
+
+  temp.innerHTML =
+    originalHTML;
+
+
+  const text =
+    temp.innerText;
+
+
+  letter.innerHTML = "";
+
+  letter.classList.add(
+    "letter-cursor"
+  );
+
+
+  let index = 0;
+
+
+  function type() {
+
+    if (index < text.length) {
+
+      const char =
+        text.charAt(index);
+
+
+      if (char === "\n") {
+
+        letter.innerHTML +=
+          "<br>";
+
+      } else {
+
+        letter.innerHTML +=
+          char;
+
+      }
+
+
+      index++;
+
+
+      setTimeout(
+        type,
+        22
+      );
+
+    }
+
+    else {
+
+      letter.classList.remove(
+        "letter-cursor"
+      );
+
+
+      addEndButton();
+
+    }
+
+  }
+
+
+  type();
+
+}
+
+
+/* =========================================
+   END BUTTON
+========================================= */
+
+function addEndButton() {
+
+  const letter =
+    document.querySelector(
+      ".final-letter"
+    );
+
+
+  if (!letter) {
+    return;
+  }
+
+
+  if (
+    document.getElementById(
+      "endGameButton"
+    )
+  ) {
+    return;
+  }
+
+
+  const button =
+    document.createElement(
+      "button"
+    );
+
+
+  button.id =
+    "endGameButton";
+
+  button.className =
+    "pixel-btn";
+
+  button.textContent =
+    "THE END ♡";
+
+
+  button.style.marginTop =
+    "25px";
+
+
+  button.onclick =
+    showEndScreen;
+
+
+  letter.appendChild(button);
+
+}
+
+
+/* =========================================
+   END SCREEN
+========================================= */
+
+function showEndScreen() {
+
+  createHeartBurst();
+
+
+  let screen =
+    document.getElementById(
+      "endScreen"
+    );
+
+
+  if (!screen) {
+
+    screen =
+      document.createElement(
+        "div"
+      );
+
+
+    screen.id =
+      "endScreen";
+
+
+    screen.innerHTML = `
+      <div class="end-content">
+
+        <p class="tiny-title">
+          GAME COMPLETE ♡
+        </p>
+
+        <h1>
+          THE END ♡
+        </h1>
+
+        <p>
+          Hanif ♡ Dee
+        </p>
+
+      </div>
+    `;
+
+
+    document.body.appendChild(
+      screen
+    );
+
+  }
+
+
+  screen.classList.add(
+    "active"
+  );
+
+}
+
+
+/* =========================================
+   HOOK LETTER SCENE
+========================================= */
+
+const originalShowLetter =
+  showLetter;
+
+
+showLetter =
+  function() {
+
+    originalShowLetter();
+
+
+    setTimeout(function() {
+
+      typeFinalLetter();
+
+    }, 400);
+
+  };
