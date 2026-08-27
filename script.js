@@ -1,186 +1,221 @@
-const startButton =
-  document.getElementById("start-btn");
+document.addEventListener("DOMContentLoaded", function () {
 
-const continueButton =
-  document.getElementById("continue-btn");
+  const startScreen =
+    document.getElementById("start-screen");
 
-const nextButton =
-  document.getElementById("next-btn");
+  const scene2 =
+    document.getElementById("scene-2");
 
-const yesButton =
-  document.getElementById("yes-btn");
+  const scene3 =
+    document.getElementById("scene-3");
 
-const noButton =
-  document.getElementById("no-btn");
+  const scene4 =
+    document.getElementById("scene-4");
 
-const finalButton =
-  document.getElementById("final-btn");
+  const scene5 =
+    document.getElementById("scene-5");
 
-
-const startScreen =
-  document.getElementById("start-screen");
-
-const scene2 =
-  document.getElementById("scene-2");
-
-const scene3 =
-  document.getElementById("scene-3");
-
-const scene4 =
-  document.getElementById("scene-4");
-
-const scene5 =
-  document.getElementById("scene-5");
-
-const scene6 =
-  document.getElementById("scene-6");
+  const scene6 =
+    document.getElementById("scene-6");
 
 
-const bgMusic =
-  document.getElementById("bg-music");
+  const startBtn =
+    document.getElementById("start-btn");
+
+  const continueBtn =
+    document.getElementById("continue-btn");
+
+  const nextBtn =
+    document.getElementById("next-btn");
+
+  const yesBtn =
+    document.getElementById("yes-btn");
+
+  const noBtn =
+    document.getElementById("no-btn");
+
+  const finalBtn =
+    document.getElementById("final-btn");
+
+  const music =
+    document.getElementById("bg-music");
 
 
-/* =========================
-   START
-========================= */
+  /* =========================
+     CHANGE SCENE
+  ========================== */
 
-startButton.addEventListener(
-  "click",
-  function () {
+  function showScene(scene) {
 
-    bgMusic.volume = 0.65;
+    document
+      .querySelectorAll(".screen")
+      .forEach(function (screen) {
 
-    bgMusic
-      .play()
-      .catch(function (error) {
-        console.log(
-          "Music could not start:",
-          error
-        );
+        screen.classList.add("hidden");
+
       });
 
 
-    startScreen.classList.add("hidden");
-
-    scene2.classList.remove("hidden");
+    scene.classList.remove("hidden");
 
   }
-);
 
 
-/* =========================
-   SCENE 2 -> 3
-========================= */
+  /* =========================
+     START
+  ========================== */
 
-continueButton.addEventListener(
-  "click",
-  function () {
+  startBtn.addEventListener("click", function () {
 
-    scene2.classList.add("hidden");
+    if (music) {
 
-    scene3.classList.remove("hidden");
+      music.volume = 0.5;
 
-  }
-);
+      music.play().catch(function () {
+        console.log("Music waiting for user interaction.");
+      });
 
+    }
 
-/* =========================
-   SCENE 3 -> 4
-========================= */
+    showScene(scene2);
 
-nextButton.addEventListener(
-  "click",
-  function () {
-
-    scene3.classList.add("hidden");
-
-    scene4.classList.remove("hidden");
-
-  }
-);
+  });
 
 
-/* =========================
-   NO BUTTON RUNS AWAY
-========================= */
+  /* =========================
+     SCENE 2
+  ========================== */
 
-noButton.addEventListener(
-  "click",
-  function () {
+  continueBtn.addEventListener("click", function () {
 
-    const padding = 20;
+    showScene(scene3);
 
-    const maxX =
-      window.innerWidth
-      - noButton.offsetWidth
-      - padding;
-
-    const maxY =
-      window.innerHeight
-      - noButton.offsetHeight
-      - padding;
+  });
 
 
-    const randomX =
-      Math.max(
-        padding,
-        Math.floor(
-          Math.random() * maxX
-        )
-      );
+  /* =========================
+     SCENE 3 MEMORY QUIZ
+  ========================== */
 
-    const randomY =
-      Math.max(
-        padding,
-        Math.floor(
-          Math.random() * maxY
-        )
-      );
+  const quizOptions =
+    document.querySelectorAll(".quiz-option");
+
+  const quizResult =
+    document.getElementById("quiz-result");
 
 
-    noButton.style.position =
-      "fixed";
+  quizOptions.forEach(function (option) {
 
-    noButton.style.left =
-      randomX + "px";
-
-    noButton.style.top =
-      randomY + "px";
-
-    noButton.style.zIndex =
-      "9999";
-
-  }
-);
+    option.addEventListener("click", function () {
 
 
-/* =========================
-   YES -> BIRTHDAY
-========================= */
+      /* CORRECT ANSWER */
 
-yesButton.addEventListener(
-  "click",
-  function () {
+      if (
+        option.classList.contains("correct-answer")
+      ) {
 
-    scene4.classList.add("hidden");
+        quizResult.textContent =
+          "CORRECT! ♡ MEMORY UNLOCKED";
 
-    scene5.classList.remove("hidden");
-
-  }
-);
+        option.classList.add(
+          "answer-correct"
+        );
 
 
-/* =========================
-   FINAL LETTER
-========================= */
+        quizOptions.forEach(function (button) {
 
-finalButton.addEventListener(
-  "click",
-  function () {
+          button.disabled = true;
 
-    scene5.classList.add("hidden");
+        });
 
-    scene6.classList.remove("hidden");
 
-  }
-);
+        nextBtn.classList.remove("hidden");
+
+      }
+
+
+      /* WRONG ANSWER */
+
+      else {
+
+        quizResult.textContent =
+          "WRONG MEMORY! TRY AGAIN ♡";
+
+
+        option.classList.add(
+          "answer-wrong"
+        );
+
+
+        setTimeout(function () {
+
+          option.classList.remove(
+            "answer-wrong"
+          );
+
+        }, 350);
+
+      }
+
+    });
+
+  });
+
+
+  /* NEXT AFTER CORRECT ANSWER */
+
+  nextBtn.addEventListener("click", function () {
+
+    showScene(scene4);
+
+  });
+
+
+  /* =========================
+     SCENE 4
+  ========================== */
+
+  yesBtn.addEventListener("click", function () {
+
+    showScene(scene5);
+
+  });
+
+
+  /* NO BUTTON RUNS AWAY */
+
+  noBtn.addEventListener("click", function () {
+
+    noBtn.textContent =
+      "ARE YOU SURE? 😭";
+
+  });
+
+
+  noBtn.addEventListener("mouseenter", function () {
+
+    const x =
+      Math.floor(Math.random() * 80) - 40;
+
+    const y =
+      Math.floor(Math.random() * 40) - 20;
+
+
+    noBtn.style.transform =
+      "translate(" + x + "px," + y + "px)";
+
+  });
+
+
+  /* =========================
+     SCENE 5
+  ========================== */
+
+  finalBtn.addEventListener("click", function () {
+
+    showScene(scene6);
+
+  });
+
+});
