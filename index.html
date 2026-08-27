@@ -11,16 +11,15 @@
 
   <title>For You ♡</title>
 
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=12">
 </head>
-
 
 <body>
 
 
-  <!-- =======================
+  <!-- =========================
        SCENE 1
-  ======================== -->
+  ========================== -->
 
   <section id="start-screen" class="screen">
 
@@ -30,7 +29,6 @@
     <div class="floating-heart heart-one">♡</div>
     <div class="floating-heart heart-two">♡</div>
     <div class="floating-heart heart-three">♡</div>
-
 
     <div class="start-content">
 
@@ -49,8 +47,6 @@
 
     <div class="pixel-ground"></div>
 
-
-    <!-- PIXEL GAME DECORATION -->
 
     <div class="game-world-deco">
 
@@ -74,19 +70,15 @@
         <span></span>
       </div>
 
-      <div class="game-sparkle sparkle-1">✦</div>
-      <div class="game-sparkle sparkle-2">✦</div>
-      <div class="game-sparkle sparkle-3">♡</div>
-
     </div>
 
   </section>
 
 
 
-  <!-- =======================
+  <!-- =========================
        SCENE 2
-  ======================== -->
+  ========================== -->
 
   <section id="scene-2" class="screen hidden">
 
@@ -121,8 +113,6 @@
     <div class="pixel-ground scene2-ground"></div>
 
 
-    <!-- SCENE 2 GAME DECORATION -->
-
     <div class="scene2-game-deco">
 
       <div class="scene2-level-sign">
@@ -136,17 +126,9 @@
       <div class="scene2-bush bush-a"></div>
       <div class="scene2-bush bush-b"></div>
 
-      <div class="scene2-flower s2-flower-1">
-        ✿
-      </div>
-
-      <div class="scene2-flower s2-flower-2">
-        ✿
-      </div>
-
-      <div class="scene2-flower s2-flower-3">
-        ✿
-      </div>
+      <div class="scene2-flower s2-flower-1">✿</div>
+      <div class="scene2-flower s2-flower-2">✿</div>
+      <div class="scene2-flower s2-flower-3">✿</div>
 
       <div class="scene2-mushroom s2-mushroom-1">
         <span></span>
@@ -162,9 +144,10 @@
 
 
 
-  <!-- =======================
+  <!-- =========================
        SCENE 3
-  ======================== -->
+       MEMORY QUIZ
+  ========================== -->
 
   <section id="scene-3" class="screen hidden">
 
@@ -173,71 +156,57 @@
     <div class="scene-heart memory-heart-3">♡</div>
 
 
-    <div class="memory-container">
+    <div class="memory-quiz-container">
 
       <p class="small-label">
-        OUR LITTLE STORY ♡
+        LEVEL 03 · MEMORY QUEST ♡
       </p>
 
       <h2>
-        Do you remember?
+        When did we first meet?
       </h2>
 
       <p class="memory-text">
-        The little moments we shared...
+        Let's see if you remember...
       </p>
 
 
-      <div class="memory-photos">
+      <!-- GAMBAR NANTI KITA LETAK SINI -->
 
-        <!-- MEMORY 01 -->
+      <div class="quiz-polaroid">
 
-        <div class="memory-photo photo-left">
-
-          <div class="photo-placeholder">
-            ♡
-          </div>
-
-          <span>
-            MEMORY 01
-          </span>
-
+        <div class="quiz-photo">
+          ♡
         </div>
 
-
-        <!-- MEMORY 02 -->
-
-        <div class="memory-photo photo-middle">
-
-          <div class="photo-placeholder">
-            ♡
-          </div>
-
-          <span>
-            MEMORY 02
-          </span>
-
-        </div>
-
-
-        <!-- MEMORY 03 -->
-
-        <div class="memory-photo photo-right">
-
-          <div class="photo-placeholder">
-            ♡
-          </div>
-
-          <span>
-            MEMORY 03
-          </span>
-
-        </div>
+        <p>
+          OUR FIRST MEMORY ♡
+        </p>
 
       </div>
 
 
-      <button id="next-btn">
+      <div class="quiz-answers">
+
+        <button class="quiz-option wrong-answer">
+          12 / 4 / 2025
+        </button>
+
+        <button class="quiz-option correct-answer">
+          19 / 7 / 2025
+        </button>
+
+        <button class="quiz-option wrong-answer">
+          3 / 11 / 2025
+        </button>
+
+      </div>
+
+
+      <div id="quiz-result"></div>
+
+
+      <button id="next-btn" class="quiz-next hidden">
         NEXT ♡
       </button>
 
@@ -247,10 +216,9 @@
 
 
 
-  <!-- =======================
+  <!-- =========================
        SCENE 4
-       HANIF ♡ DEE
-  ======================== -->
+  ========================== -->
 
   <section id="scene-4" class="screen hidden">
 
@@ -323,7 +291,6 @@
 
         </div>
 
-
       </div>
 
 
@@ -357,9 +324,9 @@
 
 
 
-  <!-- =======================
+  <!-- =========================
        SCENE 5
-  ======================== -->
+  ========================== -->
 
   <section id="scene-5" class="screen hidden">
 
@@ -381,29 +348,21 @@
 
       <div class="birthday-characters">
 
-
-        <!-- HANIF -->
-
         <img
           src="gambar1.png"
           alt="Hanif"
           class="birthday-character"
         >
 
-
         <div class="between-heart">
           ♡
         </div>
-
-
-        <!-- DEE -->
 
         <img
           src="gambar2.png"
           alt="Dee"
           class="birthday-character"
         >
-
 
       </div>
 
@@ -418,9 +377,9 @@
 
 
 
-  <!-- =======================
+  <!-- =========================
        SCENE 6
-  ======================== -->
+  ========================== -->
 
   <section id="scene-6" class="screen hidden">
 
@@ -484,28 +443,21 @@
 
 
 
-  <!-- =======================
-       BACKGROUND MUSIC
-  ======================== -->
+  <!-- MUSIC -->
 
   <audio
     id="bg-music"
     loop
     preload="auto"
   >
-
     <source
       src="music.mp3"
       type="audio/mpeg"
     >
-
   </audio>
 
 
-  <!-- JAVASCRIPT -->
-
-  <script src="script.js?v=7"></script>
-
+  <script src="script.js?v=8"></script>
 
 </body>
 
