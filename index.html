@@ -1,621 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- UNIVERSE -->
+<section class="scene universe-scene" id="sceneUniverse">
 
-  <title>For Dee ♡</title>
+  <!-- BACKGROUND DECORATIONS -->
+  <div class="universe-decor">
 
-  <link rel="stylesheet" href="style.css?v=100">
-</head>
+    <!-- PIXEL CLOUDS -->
+    <div class="u-cloud u-cloud-1"></div>
+    <div class="u-cloud u-cloud-2"></div>
+    <div class="u-cloud u-cloud-3"></div>
 
-<body>
+    <!-- FLOATING DECORATIONS -->
+    <span class="u-heart u-heart-1">♡</span>
+    <span class="u-heart u-heart-2">♡</span>
+    <span class="u-heart u-heart-3">♡</span>
 
-  <!-- MUSIC -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+    <span class="u-sparkle u-sparkle-1">✦</span>
+    <span class="u-sparkle u-sparkle-2">✧</span>
+    <span class="u-sparkle u-sparkle-3">✦</span>
+    <span class="u-sparkle u-sparkle-4">✧</span>
 
-  <!-- GLOBAL GAME BACKGROUND -->
-  <div class="game-world">
+    <!-- GROUND DECORATIONS -->
+    <div class="u-bush bush-1"></div>
+    <div class="u-bush bush-2"></div>
 
-    <div class="sky-dots"></div>
+    <div class="u-mushroom mushroom-1">
+      <div class="mushroom-top"></div>
+      <div class="mushroom-stem"></div>
+    </div>
 
-    <div class="pixel-cloud cloud-left"></div>
-    <div class="pixel-cloud cloud-right"></div>
+    <div class="u-mushroom mushroom-2">
+      <div class="mushroom-top"></div>
+      <div class="mushroom-stem"></div>
+    </div>
 
-    <span class="floating-heart heart-1">♡</span>
-    <span class="floating-heart heart-2">♡</span>
-    <span class="floating-heart heart-3">♡</span>
+    <div class="u-flower flowers-left">
+      ✿　✧　✿
+    </div>
 
-    <div class="ground">
-      <div class="grass-line"></div>
+    <div class="u-flower flowers-right">
+      ✿　✧　✿
+    </div>
 
-      <div class="flower-row">
-        ✿　✧　✿　✦　✿　✧　✿
-      </div>
+    <div class="universe-sign">
+      LEVEL ♡
     </div>
 
   </div>
 
 
-  <!-- =====================================================
-       SCENE 0 — CHARACTER INTRO
-  ====================================================== -->
-  <section class="scene active" id="sceneIntro">
+  <!-- MAIN CONTENT -->
+  <div class="universe-content">
 
-    <div class="intro-layout">
+    <p class="tiny-title universe-small-title">
+      ACROSS EVERY UNIVERSE
+    </p>
 
-      <div class="speech-box pixel-panel">
+    <h1 class="page-title universe-title">
+      Just us ♡
+    </h1>
 
-        <p class="tiny-title">A MESSAGE FOR DEE ♡</p>
 
-        <div id="introText" class="typewriter-text"></div>
+    <!-- CHARACTERS -->
+    <div class="couple-area">
 
-        <button
-          id="introNext"
-          class="pixel-btn hidden"
-          onclick="finishIntro()"
-        >
-          CONTINUE ♡
-        </button>
+      <div class="person">
 
-      </div>
+        <div class="character-glow">
 
-      <div class="intro-character-wrap">
-        <img
-          src="intro.png"
-          alt="Character"
-          class="intro-character"
-        >
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       SCENE 1 — READY
-  ====================================================== -->
-  <section class="scene" id="sceneReady">
-
-    <div class="center-content">
-
-      <p class="tiny-title">
-        A LITTLE STORY FOR YOU
-      </p>
-
-      <h1 class="big-title">
-        READY?
-      </h1>
-
-      <button
-        class="pixel-btn"
-        onclick="showScene('sceneWelcome')"
-      >
-        START ♡
-      </button>
-
-    </div>
-
-    <div class="level-tag">
-      LEVEL 01
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       SCENE 2 — HI SAYANG
-  ====================================================== -->
-  <section class="scene" id="sceneWelcome">
-
-    <div class="main-card pixel-panel">
-
-      <div class="large-heart">♡</div>
-
-      <h1>
-        Hi Sayang!
-      </h1>
-
-      <p>
-        I made something special for you...
-      </p>
-
-      <button
-        class="pixel-btn"
-        onclick="showScene('sceneQuestIntro')"
-      >
-        CONTINUE ♡
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       MEMORY QUEST INTRO
-  ====================================================== -->
-  <section class="scene" id="sceneQuestIntro">
-
-    <div class="center-content">
-
-      <p class="tiny-title">
-        LEVEL 02
-      </p>
-
-      <h1 class="big-title smaller">
-        MEMORY QUEST
-      </h1>
-
-      <p class="subtitle">
-        Let's see how well you remember us... ♡
-      </p>
-
-      <button
-        class="pixel-btn"
-        onclick="startQuest(1)"
-      >
-        LET'S GO!
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       QUEST SCREEN
-  ====================================================== -->
-  <section class="scene" id="sceneQuest">
-
-    <div class="quest-container">
-
-      <div class="quest-status">
-        <span id="questNumber">
-          MEMORY QUEST 01
-        </span>
-
-        <span>
-          ♡ ♡ ♡
-        </span>
-      </div>
-
-      <div class="question-box pixel-panel">
-        <h2 id="questionText"></h2>
-      </div>
-
-      <div
-        class="answer-grid"
-        id="answerGrid"
-      ></div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       WRONG ANSWER
-  ====================================================== -->
-  <section class="scene" id="sceneWrong">
-
-    <div class="result-screen">
-
-      <img
-        src="wrong.JPG"
-        alt="Try again"
-        class="result-image"
-      >
-
-      <h2 class="result-title">
-        OOPS... ♡
-      </h2>
-
-      <p>
-        Wrong memory!
-      </p>
-
-      <button
-        class="pixel-btn"
-        onclick="retryQuest()"
-      >
-        TRY AGAIN!
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       CORRECT ANSWER
-  ====================================================== -->
-  <section class="scene" id="sceneCorrect">
-
-    <div class="result-screen">
-
-      <img
-        id="correctImage"
-        src="correct1.JPG"
-        alt="Memory unlocked"
-        class="result-image"
-      >
-
-      <h2 class="result-title">
-        CORRECT! ♡
-      </h2>
-
-      <p>
-        MEMORY UNLOCKED
-      </p>
-
-      <button
-        class="pixel-btn"
-        onclick="nextQuest()"
-      >
-        NEXT!
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       ALL QUESTS COMPLETE
-  ====================================================== -->
-  <section class="scene" id="sceneQuestComplete">
-
-    <div class="main-card pixel-panel">
-
-      <p class="tiny-title">
-        QUEST COMPLETE
-      </p>
-
-      <h1>
-        You remembered! ♡
-      </h1>
-
-      <p>
-        All three memories unlocked.
-      </p>
-
-      <button
-        class="pixel-btn"
-        onclick="showScene('sceneMemories')"
-      >
-        VIEW MEMORIES
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       SIX MEMORIES
-  ====================================================== -->
-  <section class="scene scroll-scene" id="sceneMemories">
-
-    <div class="memory-page">
-
-      <p class="tiny-title">
-        OUR LITTLE STORY ♡
-      </p>
-
-      <h1 class="page-title">
-        Do you remember?
-      </h1>
-
-      <p class="subtitle">
-        Six little pieces of us...
-      </p>
-
-
-      <div class="memory-grid">
-
-        <!-- MEMORY 1 -->
-        <div class="polaroid tilt-left">
-          <img
-            src="memory1.JPG"
-            alt="Memory 1"
-          >
-          <span>MEMORY 01</span>
-        </div>
-
-
-        <!-- MEMORY 2 VIDEO -->
-        <div class="polaroid">
-          <video
-            controls
-            playsinline
-            preload="metadata"
-          >
-            <source
-              src="memory2.MP4"
-              type="video/mp4"
-            >
-          </video>
-          <span>MEMORY 02</span>
-        </div>
-
-
-        <!-- MEMORY 3 -->
-        <div class="polaroid tilt-right">
-          <img
-            src="memory3.JPG"
-            alt="Memory 3"
-          >
-          <span>MEMORY 03</span>
-        </div>
-
-
-        <!-- MEMORY 4 VIDEO -->
-        <div class="polaroid tilt-left-small">
-          <video
-            controls
-            playsinline
-            preload="metadata"
-          >
-            <source src="memory4.MOV">
-          </video>
-          <span>MEMORY 04</span>
-        </div>
-
-
-        <!-- MEMORY 5 -->
-        <div class="polaroid">
-          <img
-            src="memory5.JPG"
-            alt="Memory 5"
-          >
-          <span>MEMORY 05</span>
-        </div>
-
-
-        <!-- MEMORY 6 VIDEO -->
-        <div class="polaroid tilt-right-small">
-          <video
-            controls
-            playsinline
-            preload="metadata"
-          >
-            <source
-              src="memory6.MP4"
-              type="video/mp4"
-            >
-          </video>
-          <span>MEMORY 06</span>
-        </div>
-
-      </div>
-
-
-      <button
-        class="pixel-btn memory-next"
-        onclick="showScene('sceneUniverse')"
-      >
-        NEXT ♡
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       HANIF + DEE
-  ====================================================== -->
-  <section class="scene universe-scene" id="sceneUniverse">
-
-    <div class="universe-content">
-
-      <p class="tiny-title">
-        ACROSS EVERY UNIVERSE
-      </p>
-
-      <h1 class="page-title">
-        Just us ♡
-      </h1>
-
-
-      <div class="couple-area">
-
-        <div class="person">
           <img
             src="gambar1.png"
             alt="Hanif"
           >
-          <span>HANIF</span>
+
         </div>
 
-        <div class="between-heart">
-          ♡
-        </div>
+        <span>HANIF</span>
 
-        <div class="person">
+      </div>
+
+
+      <div class="between-heart">
+        ♡
+      </div>
+
+
+      <div class="person">
+
+        <div class="character-glow">
+
           <img
             src="gambar2.png"
             alt="Dee"
           >
-          <span>DEE</span>
-        </div>
-
-      </div>
-
-
-      <div class="universe-question pixel-panel">
-
-        <p>
-          Would you stay with me through every universe?
-        </p>
-
-        <div class="universe-buttons">
-
-          <button
-            class="pixel-btn"
-            onclick="sayYes()"
-          >
-            YES ♡
-          </button>
-
-          <button
-            class="pixel-btn no-btn"
-            id="noButton"
-            onclick="moveNoButton()"
-          >
-            NO
-          </button>
 
         </div>
+
+        <span>DEE</span>
 
       </div>
 
     </div>
 
-  </section>
 
-
-  <!-- =====================================================
-       BIRTHDAY SCENE
-  ====================================================== -->
-  <section class="scene" id="sceneBirthday">
-
-    <div class="main-card pixel-panel birthday-card">
-
-      <div class="large-heart">
-        ♡
-      </div>
-
-      <p class="tiny-title">
-        ONE LAST THING
-      </p>
-
-      <h1>
-        Happy Birthday,
-        <br>
-        Dee ♡
-      </h1>
+    <!-- QUESTION -->
+    <div class="universe-question pixel-panel">
 
       <p>
-        There's one last thing I want you to read...
+        Would you stay with me through every universe?
       </p>
 
-      <button
-        class="pixel-btn"
-        onclick="showScene('sceneLetter')"
-      >
-        OPEN LETTER ♡
-      </button>
+      <div class="universe-buttons">
 
-    </div>
+        <button
+          class="pixel-btn"
+          onclick="sayYes()"
+        >
+          YES ♡
+        </button>
 
-  </section>
-
-
-  <!-- =====================================================
-       FINAL LETTER
-  ====================================================== -->
-  <section class="scene letter-scene" id="sceneLetter">
-
-    <div class="letter-wrapper">
-
-      <div class="letter-deco flower-left">
-        ✿
-      </div>
-
-      <div class="letter-deco flower-right">
-        ✿
-      </div>
-
-
-      <div class="final-letter pixel-panel">
-
-        <p class="tiny-title">
-          FOR DEE ♡
-        </p>
-
-        <h1>
-          My favourite person,
-        </h1>
-
-
-        <div class="letter-body">
-
-          <p>
-            Happy birthday, sayang ♡
-          </p>
-
-          <p>
-            I wanted to make something a little different for you this year.
-            Not just a normal birthday wish, but a small place filled with
-            pieces of us.
-          </p>
-
-          <p>
-            Every memory we've made means more to me than I probably know
-            how to explain. From the smallest conversations, the random
-            moments, the laughs, and everything in between — I'm grateful
-            that I got to experience them with you.
-          </p>
-
-
-          <div class="final-photo-frame">
-            <img
-              src="finalphoto.JPG"
-              alt="Hanif and Dee"
-            >
-          </div>
-
-
-          <p>
-            Since the day you came into my life, you've become part of so
-            many of my favourite memories.
-          </p>
-
-          <p>
-            I hope this new chapter of your life brings you happiness,
-            success, peace, and everything you've been wishing for.
-          </p>
-
-          <p>
-            And I hope I'll still be there beside you, making more stupid,
-            funny, beautiful memories together.
-          </p>
-
-          <p>
-            No matter how many universes there are, I'd still look for you.
-          </p>
-
-          <p class="letter-highlight">
-            And I'd still choose you. ♡
-          </p>
-
-          <p>
-            Happy Birthday, Dee.
-            <br><br>
-            I love you.
-          </p>
-
-          <p class="signature">
-            Always,
-            <br>
-            Hanif ♡
-          </p>
-
-        </div>
+        <button
+          class="pixel-btn no-btn"
+          id="noButton"
+          onclick="moveNoButton()"
+        >
+          NO
+        </button>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
 
-
-  <script src="script.js?v=100"></script>
-
-</body>
-</html>
+</section>
