@@ -520,24 +520,30 @@ function moveNoButton() {
    LETTER
 ========================================================= */
 
+/* =========================================================
+   FINAL LETTER
+========================================================= */
+
 function showLetter() {
 
-  showScene(
-    "letterScene"
-  );
+  showScene("letterScene");
 
+  const letterScene =
+    document.getElementById(
+      "letterScene"
+    );
 
-  if (
-    !finalLetterPlayed
-  ) {
+  if (letterScene) {
+    letterScene.scrollTop = 0;
+  }
+
+  if (!finalLetterPlayed) {
+
+    finalLetterPlayed = true;
 
     setTimeout(
-      function() {
-
-        typeFinalLetter();
-
-      },
-      400
+      revealFinalLetter,
+      350
     );
 
   }
@@ -546,20 +552,10 @@ function showLetter() {
 
 
 /* =========================================================
-   TYPE FINAL LETTER
+   REVEAL FINAL LETTER
 ========================================================= */
 
-function typeFinalLetter() {
-
-  if (
-    finalLetterPlayed
-  ) {
-    return;
-  }
-
-
-  finalLetterPlayed = true;
-
+function revealFinalLetter() {
 
   const paragraphs =
     Array.from(
@@ -569,51 +565,31 @@ function typeFinalLetter() {
     );
 
 
-  /*
-    Save the text first
-  */
-
-  const paragraphTexts =
-    paragraphs.map(
-      function(paragraph) {
-
-        return paragraph.innerText;
-
-      }
-    );
-
-
-  /*
-    Clear paragraph text
-  */
-
   paragraphs.forEach(
     function(paragraph) {
 
-      paragraph.textContent =
-        "";
-
-
       paragraph.classList.remove(
-        "reveal-text",
-        "typing-now"
+        "letter-show"
       );
 
     }
   );
 
 
-  let paragraphIndex = 0;
+  let index = 0;
 
 
-  function typeNextParagraph() {
+  function revealNext() {
 
     if (
-      paragraphIndex >=
+      index >=
       paragraphs.length
     ) {
 
-      addEndButton();
+      setTimeout(
+        addEndButton,
+        500
+      );
 
       return;
 
@@ -621,99 +597,44 @@ function typeFinalLetter() {
 
 
     const paragraph =
-      paragraphs[
-        paragraphIndex
-      ];
-
-
-    const text =
-      paragraphTexts[
-        paragraphIndex
-      ];
+      paragraphs[index];
 
 
     paragraph.classList.add(
-      "reveal-text",
-      "typing-now"
+      "letter-show"
     );
 
 
-    let charIndex = 0;
+    const letterScene =
+      document.getElementById(
+        "letterScene"
+      );
 
 
-    function typeCharacter() {
+    if (letterScene) {
 
-      if (
-        charIndex <
-        text.length
-      ) {
-
-        paragraph.textContent +=
-          text.charAt(
-            charIndex
-          );
-
-
-        charIndex++;
-
-
-        /*
-          Scroll down gradually
-        */
-
-        const letterScene =
-          document.getElementById(
-            "letterScene"
-          );
-
-
-        if (
-          letterScene
-        ) {
-
-          letterScene.scrollTop =
-            letterScene.scrollHeight;
-
-        }
-
-
-        setTimeout(
-          typeCharacter,
-          20
-        );
-
-      }
-
-      else {
-
-        paragraph.classList.remove(
-          "typing-now"
-        );
-
-
-        paragraphIndex++;
-
-
-        setTimeout(
-          typeNextParagraph,
-          300
-        );
-
-      }
+      paragraph.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
 
     }
 
 
-    typeCharacter();
+    index++;
+
+
+    setTimeout(
+      revealNext,
+      900
+    );
 
   }
 
 
-  typeNextParagraph();
+  revealNext();
 
 }
-
-
 /* =========================================================
    END BUTTON
 ========================================================= */
