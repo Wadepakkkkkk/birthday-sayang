@@ -537,93 +537,132 @@ yesUniverse =
 
 
 /* =========================================
-   FINAL LETTER TYPEWRITER
+   FINAL LETTER TYPEWRITER - PROPER
 ========================================= */
 
-function typeFinalLetter() {
-
-  const letter =
-    document.querySelector(
-      ".letter-body"
-    );
+let finalLetterPlayed = false;
 
 
-  if (!letter) {
+function typeFinalLetterProper() {
+
+  if (finalLetterPlayed) {
     return;
   }
 
-
-  const originalHTML =
-    letter.innerHTML;
+  finalLetterPlayed = true;
 
 
-  const temp =
-    document.createElement("div");
-
-  temp.innerHTML =
-    originalHTML;
-
-
-  const text =
-    temp.innerText;
+  const paragraphs =
+    Array.from(
+      document.querySelectorAll(
+        ".letter-body > p"
+      )
+    );
 
 
-  letter.innerHTML = "";
-
-  letter.classList.add(
-    "letter-cursor"
-  );
+  let paragraphIndex = 0;
 
 
-  let index = 0;
+  function typeNextParagraph() {
 
-
-  function type() {
-
-    if (index < text.length) {
-
-      const char =
-        text.charAt(index);
-
-
-      if (char === "\n") {
-
-        letter.innerHTML +=
-          "<br>";
-
-      } else {
-
-        letter.innerHTML +=
-          char;
-
-      }
-
-
-      index++;
-
-
-      setTimeout(
-        type,
-        22
-      );
-
-    }
-
-    else {
-
-      letter.classList.remove(
-        "letter-cursor"
-      );
-
+    if (
+      paragraphIndex >=
+      paragraphs.length
+    ) {
 
       addEndButton();
 
+      return;
+
     }
+
+
+    const paragraph =
+      paragraphs[paragraphIndex];
+
+
+    const originalText =
+      paragraph.innerText;
+
+
+    paragraph.textContent = "";
+
+    paragraph.classList.add(
+      "reveal-text",
+      "typing-now"
+    );
+
+
+    let charIndex = 0;
+
+
+    function typeCharacter() {
+
+      if (
+        charIndex <
+        originalText.length
+      ) {
+
+        paragraph.textContent +=
+          originalText.charAt(
+            charIndex
+          );
+
+
+        charIndex++;
+
+
+        /*
+          Auto scroll as text grows
+        */
+
+        const letter =
+          document.querySelector(
+            ".final-letter"
+          );
+
+
+        if (letter) {
+
+          letter.scrollTop =
+            letter.scrollHeight;
+
+        }
+
+
+        setTimeout(
+          typeCharacter,
+          22
+        );
+
+      }
+
+      else {
+
+        paragraph.classList.remove(
+          "typing-now"
+        );
+
+
+        paragraphIndex++;
+
+
+        setTimeout(
+          typeNextParagraph,
+          350
+        );
+
+      }
+
+    }
+
+
+    typeCharacter();
 
   }
 
 
-  type();
+  typeNextParagraph();
 
 }
 
@@ -663,22 +702,22 @@ function addEndButton() {
   button.id =
     "endGameButton";
 
+
   button.className =
     "pixel-btn";
 
+
   button.textContent =
     "THE END ♡";
-
-
-  button.style.marginTop =
-    "25px";
 
 
   button.onclick =
     showEndScreen;
 
 
-  letter.appendChild(button);
+  letter.appendChild(
+    button
+  );
 
 }
 
@@ -744,7 +783,141 @@ function showEndScreen() {
 
 
 /* =========================================
-   HOOK LETTER SCENE
+   HEART BURST
+========================================= */
+
+function createHeartBurst() {
+
+  const burst =
+    document.createElement(
+      "div"
+    );
+
+
+  burst.className =
+    "heart-burst";
+
+
+  for (
+    let i = 0;
+    i < 18;
+    i++
+  ) {
+
+    const heart =
+      document.createElement(
+        "span"
+      );
+
+
+    heart.className =
+      "heart-particle";
+
+
+    heart.textContent =
+      i % 3 === 0
+        ? "✦"
+        : "♡";
+
+
+    const angle =
+      Math.random() *
+      Math.PI *
+      2;
+
+
+    const distance =
+      80 +
+      Math.random() *
+      160;
+
+
+    const x =
+      Math.cos(angle) *
+      distance;
+
+
+    const y =
+      Math.sin(angle) *
+      distance;
+
+
+    heart.style.setProperty(
+      "--x",
+      x + "px"
+    );
+
+
+    heart.style.setProperty(
+      "--y",
+      y + "px"
+    );
+
+
+    burst.appendChild(
+      heart
+    );
+
+  }
+
+
+  document.body.appendChild(
+    burst
+  );
+
+
+  setTimeout(
+    function() {
+
+      burst.remove();
+
+    },
+    1300
+  );
+
+}
+
+
+/* =========================================
+   HOOK CORRECT ANSWER
+========================================= */
+
+const originalCorrectAnswer =
+  correctAnswer;
+
+
+correctAnswer =
+  function(questNumber) {
+
+    createHeartBurst();
+
+    originalCorrectAnswer(
+      questNumber
+    );
+
+  };
+
+
+/* =========================================
+   HOOK YES
+========================================= */
+
+const originalYesUniverse =
+  yesUniverse;
+
+
+yesUniverse =
+  function() {
+
+    createHeartBurst();
+
+    originalYesUniverse();
+
+  };
+
+
+/* =========================================
+   HOOK LETTER
 ========================================= */
 
 const originalShowLetter =
@@ -757,10 +930,13 @@ showLetter =
     originalShowLetter();
 
 
-    setTimeout(function() {
+    setTimeout(
+      function() {
 
-      typeFinalLetter();
+        typeFinalLetterProper();
 
-    }, 400);
+      },
+      500
+    );
 
   };
