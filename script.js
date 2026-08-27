@@ -1,115 +1,24 @@
-const bgMusic =
-  document.getElementById("bgMusic");
+/* =========================================================
+   GLOBAL
+========================================================= */
 
-const introText =
-  document.getElementById("introText");
+const bgMusic = document.getElementById("bgMusic");
 
-const introNext =
-  document.getElementById("introNext");
-
-const questionText =
-  document.getElementById("questionText");
-
-const answerGrid =
-  document.getElementById("answerGrid");
-
-const questNumber =
-  document.getElementById("questNumber");
-
-const correctImage =
-  document.getElementById("correctImage");
-
+const correctImage = document.getElementById("correctImage");
 
 let currentQuest = 1;
 
 
-/* INTRO */
 
-const introMessage =
-  "Hi Dee ♡\n\n" +
-  "I made a little game just for you.\n\n" +
-  "Complete all the levels to unlock your surprise...";
-
-
-let introIndex = 0;
-
-
-function typeIntro() {
-
-  if (introIndex < introMessage.length) {
-
-    const character =
-      introMessage.charAt(introIndex);
-
-
-    if (character === "\n") {
-
-      introText.innerHTML += "<br>";
-
-    } else {
-
-      introText.innerHTML += character;
-
-    }
-
-
-    introIndex++;
-
-
-    setTimeout(typeIntro, 38);
-
-  } else {
-
-    introNext.classList.remove("hidden");
-
-  }
-
-}
-
-
-window.addEventListener("load", () => {
-
-  setTimeout(typeIntro, 500);
-
-});
-
-
-/* MUSIC */
-
-function startMusic() {
-
-  if (!bgMusic) return;
-
-
-  bgMusic.volume = 0.45;
-
-
-  const playPromise =
-    bgMusic.play();
-
-
-  if (playPromise !== undefined) {
-
-    playPromise.catch(() => {
-
-      console.log(
-        "Music waiting for user interaction."
-      );
-
-    });
-
-  }
-
-}
-
-
-/* SCENES */
+/* =========================================================
+   SHOW SCENE
+========================================================= */
 
 function showScene(sceneId) {
 
   document
     .querySelectorAll(".scene")
-    .forEach(scene => {
+    .forEach(function(scene) {
 
       scene.classList.remove("active");
 
@@ -135,21 +44,25 @@ function showScene(sceneId) {
   target.classList.add("active");
 
 
-  /* MEMORY VIDEO AUTOPLAY */
+  /* =================================
+     MEMORY VIDEOS
+  ================================= */
 
   const memoryVideos =
     document.querySelectorAll(
-      "#sceneMemories video"
+      "#memoryScene video"
     );
 
 
-  if (sceneId === "sceneMemories") {
+  if (sceneId === "memoryScene") {
 
-    memoryVideos.forEach(video => {
+    memoryVideos.forEach(function(video) {
 
       video.muted = true;
 
-      video.currentTime = 0;
+      video.loop = true;
+
+      video.playsInline = true;
 
 
       const playPromise =
@@ -158,15 +71,24 @@ function showScene(sceneId) {
 
       if (playPromise !== undefined) {
 
-        playPromise.catch(() => {});
+        playPromise.catch(function(error) {
+
+          console.log(
+            "Autoplay waiting:",
+            error
+          );
+
+        });
 
       }
 
     });
 
-  } else {
+  }
 
-    memoryVideos.forEach(video => {
+  else {
+
+    memoryVideos.forEach(function(video) {
 
       video.pause();
 
@@ -177,245 +99,208 @@ function showScene(sceneId) {
 }
 
 
-/* INTRO CONTINUE */
 
-function finishIntro() {
+/* =========================================================
+   BACKGROUND MUSIC
+========================================================= */
 
-  startMusic();
+function startMusic() {
 
-  showScene("sceneReady");
-
-}
-
-
-/* QUESTS */
-
-const quests = {
-
-  1: {
-
-    question:
-      "What was Dee's first impression of Hanif?",
-
-    answers: [
-
-      {
-        text: "SOMBONG",
-        correct: false
-      },
-
-      {
-        text: "HANDSOME ♡",
-        correct: true
-      },
-
-      {
-        text: "ANNOYING",
-        correct: false
-      }
-
-    ],
-
-    image: "correct1.JPG"
-
-  },
-
-
-  2: {
-
-    question:
-      "When did we first meet?",
-
-    answers: [
-
-      {
-        text: "12/4/2025",
-        correct: false
-      },
-
-      {
-        text: "19/7/2025",
-        correct: true
-      },
-
-      {
-        text: "3/11/2025",
-        correct: false
-      }
-
-    ],
-
-    image: "correct2.JPG"
-
-  },
-
-
-  3: {
-
-    question:
-      "What is Dee's favourite?",
-
-    answers: [
-
-      {
-        text: "DUBAI CHEWY COOKIES",
-        correct: false
-      },
-
-      {
-        text: "SOFT COOKIES",
-        correct: false
-      },
-
-      {
-        text: "HANIF ♡",
-        correct: true
-      }
-
-    ],
-
-    image: "correct3.JPG"
-
-  }
-
-};
-
-
-/* START QUEST */
-
-function startQuest(number) {
-
-  currentQuest = number;
-
-  loadQuest();
-
-  showScene("sceneQuest");
-
-}
-
-
-/* LOAD QUEST */
-
-function loadQuest() {
-
-  const quest =
-    quests[currentQuest];
-
-
-  if (!quest) {
+  if (!bgMusic) {
     return;
   }
 
 
-  questNumber.textContent =
-    `MEMORY QUEST 0${currentQuest}`;
+  bgMusic.volume = 0.45;
 
 
-  questionText.textContent =
-    quest.question;
+  const playPromise =
+    bgMusic.play();
 
 
-  answerGrid.innerHTML = "";
+  if (playPromise !== undefined) {
 
+    playPromise.catch(function(error) {
 
-  quest.answers.forEach(answer => {
+      console.log(
+        "Music waiting for interaction:",
+        error
+      );
 
-    const button =
-      document.createElement("button");
-
-
-    button.className =
-      "pixel-btn";
-
-
-    button.textContent =
-      answer.text;
-
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        checkAnswer(
-          answer.correct
-        );
-
-      }
-    );
-
-
-    answerGrid.appendChild(button);
-
-  });
-
-}
-
-
-/* CHECK ANSWER */
-
-function checkAnswer(isCorrect) {
-
-  if (isCorrect) {
-
-    correctImage.src =
-      quests[currentQuest].image;
-
-
-    showScene("sceneCorrect");
-
-  } else {
-
-    showScene("sceneWrong");
+    });
 
   }
 
 }
 
 
-/* RETRY */
 
-function retryQuest() {
+/* =========================================================
+   INTRO -> READY
+========================================================= */
 
-  loadQuest();
+function startGame() {
 
-  showScene("sceneQuest");
+  startMusic();
+
+  showScene("readyScene");
 
 }
 
 
-/* NEXT QUEST */
+
+/* =========================================================
+   READY -> WELCOME
+========================================================= */
+
+function showWelcome() {
+
+  showScene("welcomeScene");
+
+}
+
+
+
+/* =========================================================
+   WELCOME -> QUEST 1
+========================================================= */
+
+function startQuest() {
+
+  currentQuest = 1;
+
+  showScene("quest1");
+
+}
+
+
+
+/* =========================================================
+   WRONG ANSWER
+========================================================= */
+
+function wrongAnswer(questNumber) {
+
+  currentQuest = questNumber;
+
+  showScene("wrongScene");
+
+}
+
+
+
+/* =========================================================
+   TRY AGAIN
+========================================================= */
+
+function tryAgain() {
+
+  showScene(
+    "quest" + currentQuest
+  );
+
+}
+
+
+
+/* =========================================================
+   CORRECT ANSWER
+========================================================= */
+
+function correctAnswer(questNumber) {
+
+  currentQuest = questNumber;
+
+
+  const images = {
+
+    1: "correct1.JPG",
+
+    2: "correct2.JPG",
+
+    3: "correct3.JPG"
+
+  };
+
+
+  if (correctImage) {
+
+    correctImage.src =
+      images[questNumber];
+
+  }
+
+
+  showScene("correctScene");
+
+}
+
+
+
+/* =========================================================
+   NEXT QUEST
+========================================================= */
 
 function nextQuest() {
 
-  if (currentQuest < 3) {
+  if (currentQuest === 1) {
 
-    currentQuest++;
+    currentQuest = 2;
 
-    loadQuest();
+    showScene("quest2");
 
-    showScene("sceneQuest");
+  }
 
-  } else {
+  else if (currentQuest === 2) {
 
-    showScene(
-      "sceneQuestComplete"
-    );
+    currentQuest = 3;
+
+    showScene("quest3");
+
+  }
+
+  else {
+
+    /*
+      Quest 3 complete.
+      Go straight to six memories.
+    */
+
+    showScene("memoryScene");
 
   }
 
 }
 
 
-/* YES */
 
-function sayYes() {
+/* =========================================================
+   MEMORY GALLERY -> JUST US
+========================================================= */
 
-  showScene("sceneBirthday");
+function showUniverse() {
+
+  showScene("universeScene");
 
 }
 
 
-/* NO BUTTON */
+
+/* =========================================================
+   YES BUTTON
+========================================================= */
+
+function yesUniverse() {
+
+  showScene("birthdayScene");
+
+}
+
+
+
+/* =========================================================
+   NO BUTTON
+========================================================= */
 
 let noClicks = 0;
 
@@ -426,6 +311,11 @@ function moveNoButton() {
     document.getElementById(
       "noButton"
     );
+
+
+  if (!button) {
+    return;
+  }
 
 
   noClicks++;
@@ -457,19 +347,28 @@ function moveNoButton() {
 
   const x =
     Math.floor(
-      Math.random() * 100
-    ) - 50;
+      Math.random() * 130
+    ) - 65;
 
 
   const y =
     Math.floor(
-      Math.random() * 60
-    ) - 30;
+      Math.random() * 80
+    ) - 40;
 
 
   button.style.transform =
-    `translate(${x}px, ${y}px)`;
+    "translate(" +
+    x +
+    "px, " +
+    y +
+    "px)";
 
+
+  /*
+    Lepas beberapa kali,
+    NO surrender jadi YES 😂
+  */
 
   if (noClicks >= 5) {
 
@@ -477,13 +376,58 @@ function moveNoButton() {
       "YES ♡";
 
 
-    button.onclick =
-      sayYes;
-
-
     button.style.transform =
       "none";
+
+
+    button.onclick =
+      yesUniverse;
 
   }
 
 }
+
+
+
+/* =========================================================
+   BIRTHDAY -> LETTER
+========================================================= */
+
+function showLetter() {
+
+  showScene("letterScene");
+
+}
+
+
+
+/* =========================================================
+   CONNECT NO BUTTON
+========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    const noButton =
+      document.getElementById(
+        "noButton"
+      );
+
+
+    if (noButton) {
+
+      noButton.addEventListener(
+        "click",
+        moveNoButton
+      );
+
+      noButton.addEventListener(
+        "mouseenter",
+        moveNoButton
+      );
+
+    }
+
+  }
+);
