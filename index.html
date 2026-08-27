@@ -1,135 +1,977 @@
-<!-- UNIVERSE -->
-<section class="scene universe-scene" id="sceneUniverse">
+<!DOCTYPE html>
+<html lang="en">
 
-  <!-- BACKGROUND DECORATIONS -->
-  <div class="universe-decor">
+<head>
+  <meta charset="UTF-8">
 
-    <!-- PIXEL CLOUDS -->
-    <div class="u-cloud u-cloud-1"></div>
-    <div class="u-cloud u-cloud-2"></div>
-    <div class="u-cloud u-cloud-3"></div>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <!-- FLOATING DECORATIONS -->
-    <span class="u-heart u-heart-1">♡</span>
-    <span class="u-heart u-heart-2">♡</span>
-    <span class="u-heart u-heart-3">♡</span>
+  <title>For Dee ♡</title>
 
-    <span class="u-sparkle u-sparkle-1">✦</span>
-    <span class="u-sparkle u-sparkle-2">✧</span>
-    <span class="u-sparkle u-sparkle-3">✦</span>
-    <span class="u-sparkle u-sparkle-4">✧</span>
+  <link rel="stylesheet" href="./style.css?v=105">
+</head>
 
-    <!-- GROUND DECORATIONS -->
-    <div class="u-bush bush-1"></div>
-    <div class="u-bush bush-2"></div>
 
-    <div class="u-mushroom mushroom-1">
-      <div class="mushroom-top"></div>
-      <div class="mushroom-stem"></div>
-    </div>
+<body>
 
-    <div class="u-mushroom mushroom-2">
-      <div class="mushroom-top"></div>
-      <div class="mushroom-stem"></div>
-    </div>
+  <!-- =========================================
+       MUSIC
+  ========================================== -->
 
-    <div class="u-flower flowers-left">
-      ✿　✧　✿
-    </div>
+  <audio id="bgMusic" loop>
+    <source src="./music.mp3" type="audio/mpeg">
+  </audio>
 
-    <div class="u-flower flowers-right">
-      ✿　✧　✿
-    </div>
 
-    <div class="universe-sign">
-      LEVEL ♡
+  <!-- =========================================
+       MAIN PINK WORLD
+  ========================================== -->
+
+  <div class="game-world">
+
+    <div class="sky-dots"></div>
+
+    <div class="pixel-cloud cloud-left"></div>
+    <div class="pixel-cloud cloud-right"></div>
+
+    <div class="floating-heart heart-1">♡</div>
+    <div class="floating-heart heart-2">♡</div>
+    <div class="floating-heart heart-3">♡</div>
+
+    <div class="ground">
+      <div class="grass-line"></div>
+
+      <div class="flower-row">
+        ✿ ✦ ✿ ✦ ✿ ✦ ✿
+      </div>
     </div>
 
   </div>
 
 
-  <!-- MAIN CONTENT -->
-  <div class="universe-content">
 
-    <p class="tiny-title universe-small-title">
-      ACROSS EVERY UNIVERSE
-    </p>
+  <!-- =========================================
+       SCENE 1
+       CHARACTER INTRO
+  ========================================== -->
 
-    <h1 class="page-title universe-title">
-      Just us ♡
-    </h1>
+  <section
+    id="introScene"
+    class="scene active"
+  >
 
+    <div class="intro-layout">
 
-    <!-- CHARACTERS -->
-    <div class="couple-area">
+      <div class="speech-box pixel-panel">
 
-      <div class="person">
+        <p class="tiny-title">
+          A LITTLE MESSAGE FOR YOU ♡
+        </p>
 
-        <div class="character-glow">
-
-          <img
-            src="gambar1.png"
-            alt="Hanif"
-          >
-
+        <div
+          id="introText"
+          class="typewriter-text"
+        >
+          Hi sayang...
+          I made a little something for you.
+          Before we begin, are you ready?
         </div>
 
-        <span>HANIF</span>
+        <button
+          id="introNext"
+          class="pixel-btn"
+          onclick="startGame()"
+        >
+          I'M READY ♡
+        </button>
 
       </div>
 
 
-      <div class="between-heart">
+      <div class="intro-character-wrap">
+
+        <img
+          src="./intro.png"
+          alt="Character"
+          class="intro-character"
+        >
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       SCENE 2
+       READY
+  ========================================== -->
+
+  <section
+    id="readyScene"
+    class="scene"
+  >
+
+    <div class="center-content">
+
+      <p class="tiny-title">
+        A LITTLE STORY FOR YOU
+      </p>
+
+      <h1 class="big-title">
+        READY?
+      </h1>
+
+      <button
+        class="pixel-btn"
+        onclick="showWelcome()"
+      >
+        START ♡
+      </button>
+
+    </div>
+
+    <div class="level-tag">
+      LEVEL 01
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       SCENE 3
+       HI SAYANG
+  ========================================== -->
+
+  <section
+    id="welcomeScene"
+    class="scene"
+  >
+
+    <div class="main-card pixel-panel">
+
+      <div class="large-heart">
         ♡
       </div>
 
+      <h1>
+        Hi Sayang!
+      </h1>
 
-      <div class="person">
+      <p>
+        I made something special for you...
+      </p>
 
-        <div class="character-glow">
-
-          <img
-            src="gambar2.png"
-            alt="Dee"
-          >
-
-        </div>
-
-        <span>DEE</span>
-
-      </div>
+      <button
+        class="pixel-btn"
+        onclick="startQuest()"
+      >
+        CONTINUE ♡
+      </button>
 
     </div>
 
+    <div class="level-tag">
+      LEVEL 02
+    </div>
 
-    <!-- QUESTION -->
-    <div class="universe-question pixel-panel">
+  </section>
 
-      <p>
-        Would you stay with me through every universe?
-      </p>
 
-      <div class="universe-buttons">
+
+  <!-- =========================================
+       MEMORY QUEST 1
+  ========================================== -->
+
+  <section
+    id="quest1"
+    class="scene"
+  >
+
+    <div class="quest-container">
+
+      <div class="quest-status">
+
+        <span>
+          MEMORY QUEST 01
+        </span>
+
+        <span>
+          ♡ ♡ ♡
+        </span>
+
+      </div>
+
+
+      <div class="question-box pixel-panel">
+
+        <p class="tiny-title">
+          DO YOU REMEMBER? ♡
+        </p>
+
+        <h2>
+          What was your first impression of me?
+        </h2>
+
+      </div>
+
+
+      <div class="answer-grid">
 
         <button
           class="pixel-btn"
-          onclick="sayYes()"
+          onclick="wrongAnswer(1)"
         >
-          YES ♡
+          Annoying
         </button>
 
         <button
-          class="pixel-btn no-btn"
-          id="noButton"
-          onclick="moveNoButton()"
+          class="pixel-btn"
+          onclick="correctAnswer(1)"
         >
-          NO
+          Cute
+        </button>
+
+        <button
+          class="pixel-btn"
+          onclick="wrongAnswer(1)"
+        >
+          Quiet
         </button>
 
       </div>
 
     </div>
 
-  </div>
+  </section>
 
-</section>
+
+
+  <!-- =========================================
+       MEMORY QUEST 2
+  ========================================== -->
+
+  <section
+    id="quest2"
+    class="scene"
+  >
+
+    <div class="quest-container">
+
+      <div class="quest-status">
+
+        <span>
+          MEMORY QUEST 02
+        </span>
+
+        <span>
+          ♥ ♡ ♡
+        </span>
+
+      </div>
+
+
+      <div class="question-box pixel-panel">
+
+        <p class="tiny-title">
+          OUR LITTLE STORY ♡
+        </p>
+
+        <h2>
+          When was the first time we met?
+        </h2>
+
+      </div>
+
+
+      <div class="answer-grid">
+
+        <button
+          class="pixel-btn"
+          onclick="wrongAnswer(2)"
+        >
+          12/07/2025
+        </button>
+
+        <button
+          class="pixel-btn"
+          onclick="correctAnswer(2)"
+        >
+          19/07/2025
+        </button>
+
+        <button
+          class="pixel-btn"
+          onclick="wrongAnswer(2)"
+        >
+          26/07/2025
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       MEMORY QUEST 3
+  ========================================== -->
+
+  <section
+    id="quest3"
+    class="scene"
+  >
+
+    <div class="quest-container">
+
+      <div class="quest-status">
+
+        <span>
+          MEMORY QUEST 03
+        </span>
+
+        <span>
+          ♥ ♥ ♡
+        </span>
+
+      </div>
+
+
+      <div class="question-box pixel-panel">
+
+        <p class="tiny-title">
+          LAST ONE ♡
+        </p>
+
+        <h2>
+          What was Dee's favourite?
+        </h2>
+
+      </div>
+
+
+      <div class="answer-grid">
+
+        <button
+          class="pixel-btn"
+          onclick="wrongAnswer(3)"
+        >
+          Dubai Chewy Cookies
+        </button>
+
+        <button
+          class="pixel-btn"
+          onclick="wrongAnswer(3)"
+        >
+          Soft Cookies
+        </button>
+
+        <button
+          class="pixel-btn"
+          onclick="correctAnswer(3)"
+        >
+          Hanif ♡
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       WRONG ANSWER
+  ========================================== -->
+
+  <section
+    id="wrongScene"
+    class="scene"
+  >
+
+    <div class="result-screen">
+
+      <img
+        src="./wrong.JPG"
+        alt="Try Again"
+        class="result-image"
+      >
+
+      <h1 class="result-title">
+        OOPS!
+      </h1>
+
+      <p>
+        WRONG ANSWER SAYANG 😭
+      </p>
+
+      <button
+        class="pixel-btn"
+        onclick="tryAgain()"
+      >
+        TRY AGAIN!
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       CORRECT ANSWER
+  ========================================== -->
+
+  <section
+    id="correctScene"
+    class="scene"
+  >
+
+    <div class="result-screen">
+
+      <img
+        id="correctImage"
+        src="./correct1.JPG"
+        alt="Correct"
+        class="result-image"
+      >
+
+      <h1 class="result-title">
+        CORRECT! ♡
+      </h1>
+
+      <p>
+        YOU REMEMBERED!
+      </p>
+
+      <button
+        class="pixel-btn"
+        onclick="nextQuest()"
+      >
+        NEXT ♡
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       6 MEMORIES
+  ========================================== -->
+
+  <section
+    id="memoryScene"
+    class="scene scroll-scene"
+  >
+
+    <div class="memory-page">
+
+      <p class="tiny-title">
+        OUR LITTLE STORY ♡
+      </p>
+
+      <h1 class="page-title">
+        Do you remember?
+      </h1>
+
+      <p class="subtitle">
+        The little moments we shared...
+      </p>
+
+
+      <div class="memory-grid">
+
+
+        <!-- MEMORY 1 -->
+
+        <div class="polaroid tilt-left">
+
+          <img
+            src="./memory1.JPG"
+            alt="Memory 1"
+          >
+
+          <span>
+            MEMORY 01
+          </span>
+
+        </div>
+
+
+
+        <!-- MEMORY 2 VIDEO -->
+
+        <div class="polaroid">
+
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+          >
+            <source
+              src="./memory2.MP4"
+              type="video/mp4"
+            >
+          </video>
+
+          <span>
+            MEMORY 02
+          </span>
+
+        </div>
+
+
+
+        <!-- MEMORY 3 -->
+
+        <div class="polaroid tilt-right">
+
+          <img
+            src="./memory3.JPG"
+            alt="Memory 3"
+          >
+
+          <span>
+            MEMORY 03
+          </span>
+
+        </div>
+
+
+
+        <!-- MEMORY 4 VIDEO -->
+
+        <div class="polaroid tilt-left-small">
+
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+          >
+            <source
+              src="./memory4.MOV"
+              type="video/quicktime"
+            >
+          </video>
+
+          <span>
+            MEMORY 04
+          </span>
+
+        </div>
+
+
+
+        <!-- MEMORY 5 -->
+
+        <div class="polaroid">
+
+          <img
+            src="./memory5.JPG"
+            alt="Memory 5"
+          >
+
+          <span>
+            MEMORY 05
+          </span>
+
+        </div>
+
+
+
+        <!-- MEMORY 6 VIDEO -->
+
+        <div class="polaroid tilt-right-small">
+
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+          >
+            <source
+              src="./memory6.MP4"
+              type="video/mp4"
+            >
+          </video>
+
+          <span>
+            MEMORY 06
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+      <button
+        class="pixel-btn memory-next"
+        onclick="showUniverse()"
+      >
+        CONTINUE ♡
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       JUST US / UNIVERSE
+  ========================================== -->
+
+  <section
+    id="universeScene"
+    class="scene universe-scene"
+  >
+
+
+    <!-- BACKGROUND DECORATION -->
+
+    <div class="universe-decor">
+
+      <div class="u-cloud u-cloud-1"></div>
+      <div class="u-cloud u-cloud-2"></div>
+      <div class="u-cloud u-cloud-3"></div>
+
+      <div class="u-heart u-heart-1">
+        ♡
+      </div>
+
+      <div class="u-heart u-heart-2">
+        ♡
+      </div>
+
+      <div class="u-heart u-heart-3">
+        ♡
+      </div>
+
+      <div class="u-sparkle u-sparkle-1">
+        ✦
+      </div>
+
+      <div class="u-sparkle u-sparkle-2">
+        ✦
+      </div>
+
+      <div class="u-sparkle u-sparkle-3">
+        ✦
+      </div>
+
+      <div class="u-sparkle u-sparkle-4">
+        ✦
+      </div>
+
+
+      <div class="u-bush bush-1"></div>
+      <div class="u-bush bush-2"></div>
+
+
+      <div class="u-mushroom mushroom-1">
+
+        <div class="mushroom-top"></div>
+        <div class="mushroom-stem"></div>
+
+      </div>
+
+
+      <div class="u-mushroom mushroom-2">
+
+        <div class="mushroom-top"></div>
+        <div class="mushroom-stem"></div>
+
+      </div>
+
+
+      <div class="u-flower flowers-left">
+        ✿ ✦ ✿
+      </div>
+
+      <div class="u-flower flowers-right">
+        ✿ ✦ ✿
+      </div>
+
+
+      <div class="universe-sign">
+        LEVEL ♡
+      </div>
+
+    </div>
+
+
+
+    <!-- CONTENT -->
+
+    <div class="universe-content">
+
+      <p class="tiny-title universe-small-title">
+        ACROSS EVERY UNIVERSE
+      </p>
+
+      <h1 class="big-title universe-title">
+        Just us ♡
+      </h1>
+
+
+
+      <!-- CHARACTERS -->
+
+      <div class="couple-area">
+
+
+        <!-- HANIF -->
+
+        <div class="person">
+
+          <div class="character-glow">
+
+            <img
+              src="./gambar1.png"
+              alt="Hanif"
+            >
+
+          </div>
+
+          <span>
+            HANIF
+          </span>
+
+        </div>
+
+
+
+        <!-- ONE HEART ONLY -->
+
+        <div class="between-heart">
+          ♡
+        </div>
+
+
+
+        <!-- DEE -->
+
+        <div class="person">
+
+          <div class="character-glow">
+
+            <img
+              src="./gambar2.png"
+              alt="Dee"
+            >
+
+          </div>
+
+          <span>
+            DEE
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- QUESTION -->
+
+      <div class="universe-question pixel-panel">
+
+        <p>
+          Would you stay with me through every universe?
+        </p>
+
+        <div class="universe-buttons">
+
+          <button
+            class="pixel-btn"
+            onclick="yesUniverse()"
+          >
+            YES ♡
+          </button>
+
+          <button
+            id="noButton"
+            class="pixel-btn no-btn"
+          >
+            NO
+          </button>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       BIRTHDAY MESSAGE
+  ========================================== -->
+
+  <section
+    id="birthdayScene"
+    class="scene"
+  >
+
+    <div class="main-card birthday-card pixel-panel">
+
+      <div class="large-heart">
+        ♡
+      </div>
+
+      <p class="tiny-title">
+        YOU MADE IT!
+      </p>
+
+      <h1>
+        Happy Birthday Sayang ♡
+      </h1>
+
+      <p>
+        One last thing before you go...
+      </p>
+
+      <button
+        class="pixel-btn"
+        onclick="showLetter()"
+      >
+        OPEN MY LETTER ♡
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       FINAL LETTER
+  ========================================== -->
+
+  <section
+    id="letterScene"
+    class="scene letter-scene"
+  >
+
+    <div class="letter-wrapper">
+
+      <div class="letter-deco flower-left">
+        ❀
+      </div>
+
+      <div class="letter-deco flower-right">
+        ❀
+      </div>
+
+
+      <div class="final-letter pixel-panel">
+
+        <p class="tiny-title">
+          A LETTER FOR YOU ♡
+        </p>
+
+        <h1>
+          To my favourite person,
+        </h1>
+
+
+        <div class="letter-body">
+
+          <p>
+            Happy birthday sayang.
+          </p>
+
+          <p>
+            I made this little website for you because
+            I wanted to give you something that wasn't
+            just another normal birthday present.
+          </p>
+
+          <p>
+            Something that keeps a few of our memories,
+            our little moments, and a tiny piece of our
+            story together.
+          </p>
+
+
+          <!-- FINAL PHOTO -->
+
+          <div class="final-photo-frame">
+
+            <img
+              src="./finalphoto.JPG"
+              alt="Our Photo"
+            >
+
+          </div>
+
+
+          <p>
+            Thank you for every laugh, every conversation,
+            every memory and every little moment that
+            somehow became special because it was with you.
+          </p>
+
+          <p>
+            I hope this new chapter of your life brings
+            you happiness, peace, success and everything
+            you've been wishing for.
+          </p>
+
+          <p>
+            And wherever life takes us, I hope there will
+            always be more memories for us to make.
+          </p>
+
+          <p class="letter-highlight">
+            In this universe, and every universe —
+            I'd still choose you. ♡
+          </p>
+
+
+          <p class="signature">
+            Happy Birthday, Dee ♡
+            <br><br>
+            — Hanif
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================== -->
+
+  <script src="./script.js?v=105"></script>
+
+</body>
+
+</html>
