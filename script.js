@@ -458,7 +458,7 @@ function moveNoButton() {
 
     "SURE? 😭",
 
-    "DEE...",
+    "SAYANG...",
 
     "TRY AGAIN ♡"
 
@@ -517,29 +517,33 @@ function moveNoButton() {
 
 
 /* =========================================================
-   LETTER
-========================================================= */
-
-/* =========================================================
    FINAL LETTER
 ========================================================= */
 
 function showLetter() {
 
-  showScene("letterScene");
+  showScene(
+    "letterScene"
+  );
+
 
   const letterScene =
     document.getElementById(
       "letterScene"
     );
 
+
   if (letterScene) {
+
     letterScene.scrollTop = 0;
+
   }
+
 
   if (!finalLetterPlayed) {
 
     finalLetterPlayed = true;
+
 
     setTimeout(
       revealFinalLetter,
@@ -614,8 +618,11 @@ function revealFinalLetter() {
     if (letterScene) {
 
       paragraph.scrollIntoView({
+
         behavior: "smooth",
+
         block: "center"
+
       });
 
     }
@@ -635,8 +642,10 @@ function revealFinalLetter() {
   revealNext();
 
 }
+
+
 /* =========================================================
-   END BUTTON
+   ONE LAST SECRET BUTTON
 ========================================================= */
 
 function addEndButton() {
@@ -676,15 +685,74 @@ function addEndButton() {
 
 
   button.textContent =
-    "THE END ♡";
+    "ONE LAST SECRET ♡";
 
 
   button.onclick =
-    showEndScreen;
+    showSecretScene;
 
 
   letter.appendChild(
     button
+  );
+
+}
+
+
+/* =========================================================
+   SHOW SECRET ENVELOPE
+========================================================= */
+
+function showSecretScene() {
+
+  createHeartBurst();
+
+
+  setTimeout(
+    function() {
+
+      showScene(
+        "secretScene"
+      );
+
+    },
+    350
+  );
+
+}
+
+
+/* =========================================================
+   OPEN SECRET LETTER
+========================================================= */
+
+function openSecretLetter() {
+
+  createHeartBurst();
+
+
+  setTimeout(
+    function() {
+
+      showScene(
+        "secretLetterScene"
+      );
+
+
+      const secretLetterScene =
+        document.getElementById(
+          "secretLetterScene"
+        );
+
+
+      if (secretLetterScene) {
+
+        secretLetterScene.scrollTop = 0;
+
+      }
+
+    },
+    350
   );
 
 }
@@ -729,7 +797,7 @@ function showEndScreen() {
         </h1>
 
         <p>
-          Hanif ♡ Dee
+          Bubu ♡ Sayang
         </p>
 
       </div>
