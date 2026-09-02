@@ -1922,3 +1922,278 @@ body {
   margin:
     35px auto 10px;
 }
+
+/* =========================================================
+   SECRET LETTER
+========================================================= */
+
+.secret-scene {
+  overflow: hidden;
+}
+
+.secret-wrapper {
+  position: relative;
+  z-index: 30;
+
+  width: min(600px, 92vw);
+
+  text-align: center;
+}
+
+.secret-envelope {
+  position: relative;
+
+  padding: 45px 35px;
+
+  border: 4px solid #cf6e9a;
+  border-radius: 18px;
+
+  background: rgba(255, 245, 249, 0.96);
+
+  box-shadow:
+    8px 8px 0 #b95d88,
+    inset 0 0 0 4px #ffffff;
+
+  animation:
+    secretAppear 0.8s ease;
+}
+
+.envelope-icon {
+  margin-bottom: 15px;
+
+  color: #d56495;
+
+  font-size: 75px;
+
+  animation:
+    envelopeFloat 2s ease-in-out infinite;
+}
+
+.secret-small {
+  margin-bottom: 8px;
+
+  color: #a95178;
+
+  font-size: 11px;
+
+  font-weight: bold;
+
+  letter-spacing: 3px;
+}
+
+.secret-envelope h1 {
+  margin-bottom: 18px;
+
+  color: #b6557d;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(36px, 6vw, 58px);
+}
+
+.secret-envelope > p:not(.secret-small) {
+  margin-bottom: 28px;
+
+  color: #74445b;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   SECRET LETTER OPENED
+========================================================= */
+
+.secret-letter-scene {
+  align-items: flex-start;
+
+  overflow-y: auto;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.secret-letter-wrapper {
+  position: relative;
+
+  z-index: 30;
+
+  width:
+    min(760px, 94vw);
+
+  margin: auto;
+
+  padding:
+    55px 0 90px;
+}
+
+.secret-final-letter {
+  position: relative;
+
+  padding:
+    45px 45px 55px;
+
+  overflow: hidden;
+}
+
+.secret-final-letter h1 {
+  margin-bottom: 30px;
+
+  color: #b6557d;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(32px, 5vw, 50px);
+
+  line-height: 1.2;
+}
+
+.secret-letter-body {
+  color: #74445b;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 17px;
+
+  line-height: 1.9;
+}
+
+.secret-letter-body p {
+  margin-bottom: 25px;
+}
+
+.secret-highlight {
+  padding:
+    20px 22px;
+
+  border-left:
+    4px solid #d66f9c;
+
+  background:
+    rgba(245, 184, 210, 0.22);
+
+  color: #9f486f;
+
+  font-weight: bold;
+}
+
+.secret-love {
+  margin-top: 40px;
+
+  color: #b84f7c;
+
+  font-size: 22px;
+
+  font-weight: bold;
+
+  text-align: center;
+}
+
+.secret-signature {
+  margin-top: 35px;
+
+  color: #9d4e70;
+
+  font-style: italic;
+
+  text-align: right;
+}
+
+.secret-end-btn {
+  display: flex;
+
+  margin:
+    45px auto 10px;
+}
+
+
+/* =========================================================
+   SECRET ANIMATIONS
+========================================================= */
+
+@keyframes secretAppear {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+@keyframes envelopeFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-10px);
+  }
+
+}
+
+
+/* =========================================================
+   SECRET LETTER MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .secret-envelope {
+    padding:
+      35px 22px;
+  }
+
+  .envelope-icon {
+    font-size: 60px;
+  }
+
+  .secret-letter-wrapper {
+    width: 94vw;
+
+    padding:
+      30px 0 70px;
+  }
+
+  .secret-final-letter {
+    padding:
+      32px 23px 45px;
+  }
+
+  .secret-letter-body {
+    font-size: 16px;
+
+    line-height: 1.8;
+  }
+
+  .secret-highlight {
+    padding:
+      17px 16px;
+  }
+
+}
